@@ -1,0 +1,52 @@
+{
+	"name": "@ver0/eslint-config",
+	"version": "1.0.0",
+	"description": "ESLint configs used in all ver0 projects",
+	"keywords": [
+		"eslint",
+		"config",
+		"react",
+		"typescript",
+		"vitest"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ver0-project/eslint-config"
+	},
+	"bugs": {
+		"url": "https://github.com/ver0-project/eslint-config/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "MIT",
+	"author": "Anton Zinovyev <xog3@yandex.ru>",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"postinstall": "husky",
+		"lint": "eslint",
+		"lint:fix": "eslint --fix",
+		"test": "vitest --run",
+		"test:coverage": "vitest --run --coverage"
+	},
+	"packageManager": "yarn@4.6.0",
+	"dependencies": {
+		"@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
+		"@eslint/js": "^9.19.0",
+		"eslint": "^9.19.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-n": "^17.15.1",
+		"eslint-plugin-no-use-extend-native": "^0.7.2",
+		"eslint-plugin-prettier": "^5.2.3",
+		"eslint-plugin-promise": "^7.2.1",
+		"eslint-plugin-react": "^7.37.4",
+		"eslint-plugin-unicorn": "^56.0.1",
+		"globals": "^15.14.0",
+		"prettier": "^3.4.2",
+		"typescript-eslint": "^8.23.0"
+	}
+}
