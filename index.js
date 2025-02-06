@@ -128,7 +128,8 @@ const jsRules = {
 	'import/no-named-default': 'error',
 	'import/no-webpack-loader-syntax': 'error',
 	'import/no-self-import': 'error',
-	'import/no-cycle': ['error', {ignoreExternal: true}],
+	// disable since it is a VERY slow rule
+	'import/no-cycle': 'off',
 	'import/no-useless-path-segments': 'error',
 	'import/newline-after-import': 'error',
 	'import/no-amd': 'error',
