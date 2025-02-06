@@ -1,2 +1,4 @@
 *
-!/dist
+!index.js
+!.prettierrc.js
+!.editorconfig
