@@ -55,25 +55,36 @@ const defaultExtensions = [...jsExtensions, ...tsExtensions];
  * @returns {Linter.Config[]}
  * */
 export function addFilesIfNotSet(cfgs, files) {
-	/** @type {Linter.Config[]} */
-	const result = [];
-
-	for (let cfg of cfgs) {
+	return cfgs.map((cfg) => {
 		if (cfg.files === undefined) {
-			cfg = {...cfg, files};
+			return {...cfg, files};
 		}
 
-		result.push(cfg);
-	}
-	return result;
+		return cfg;
+	});
 }
 
-const xoMinusStylistic = xoConfig[0];
-delete xoMinusStylistic.plugins['@stylistic'];
-for (const rule in xoMinusStylistic.rules) {
-	if (rule.startsWith('@stylistic/')) {
-		delete xoMinusStylistic.rules[rule];
-	}
+/**
+ * @param {Linter.Config[]} cfgs
+ *
+ * @returns {Linter.Config[]}
+ */
+function clearStylisticRules(cfgs) {
+	return cfgs.map((cfg) => {
+		if (cfg.plugins) {
+			delete cfg.plugins['@stylistic'];
+		}
+
+		if (cfg.rules) {
+			for (const rule in cfg.rules) {
+				if (rule.startsWith('@stylistic/')) {
+					delete cfg.rules[rule];
+				}
+			}
+		}
+
+		return cfg;
+	});
 }
 
 /** @type {Linter.Config[]} */
@@ -85,7 +96,7 @@ const defaultConfig = [
 	nodePlugin.configs['flat/recommended-module'],
 	unicornPlugin.configs['flat/recommended'],
 	eslintPluginNoUseExtendNative.configs.recommended,
-	xoMinusStylistic,
+	xoConfig[0],
 	{
 		rules: {
 			'no-use-extend-native/no-use-extend-native': 'error',
@@ -234,7 +245,7 @@ export function buildConfig(options) {
 	const filesDefault = [`**/*.{${defaultExtensions.join(',')}}`];
 
 	/** @type {Linter.Config[]} */
-	const result = [
+	let result = [
 		...addFilesIfNotSet(defaultConfig, filesDefault),
 		{
 			languageOptions: {
@@ -291,6 +302,8 @@ export function buildConfig(options) {
 	if (options.react) {
 		result.push(...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig], filesDefault));
 	}
+
+	result = clearStylisticRules(result);
 
 	if (options.prettier) {
 		result.push(createPrettierConfig(options));
