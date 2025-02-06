@@ -7,6 +7,12 @@ import commentsPlugin from '@eslint-community/eslint-plugin-eslint-comments/conf
 import jsConfig from '@eslint/js';
 import nodePlugin from 'eslint-plugin-n';
 import eslintPluginNoUseExtendNative from 'eslint-plugin-no-use-extend-native';
+import jsonPlugin from '@eslint/json';
+import markdownPlugin from '@eslint/markdown';
+import confusingBrowserGlobals from 'confusing-browser-globals';
+import xoConfig from 'eslint-config-xo';
+import xoTypescriptConfig from 'eslint-config-xo-typescript';
+import xoReactConfig from 'eslint-config-xo-react';
 
 /** @typedef {keyof import('globals')} Globals */
 
@@ -17,6 +23,8 @@ import eslintPluginNoUseExtendNative from 'eslint-plugin-no-use-extend-native';
  * @property {boolean} [prettier] - Whether to use the React plugin.
  * @property {boolean} [typescript] - Whether to use the TypeScript plugin.
  * @property {boolean} [vitest] - Whether to use the vitest config.
+ * @property {boolean} [json] - Whether to use the JSON config.
+ * @property {boolean} [markdown] - Whether to use the Markdown config.
  */
 
 /** @typedef {import('eslint').Linter} Linter */
@@ -24,11 +32,49 @@ import eslintPluginNoUseExtendNative from 'eslint-plugin-no-use-extend-native';
 /** @type {Options} */
 const defaultOptions = {
 	globals: 'node',
-	react: false,
 	prettier: true,
 	typescript: true,
+	json: true,
+	markdown: true,
+	react: false,
 	vitest: false,
 };
+
+const tsExtensions = ['ts', 'tsx', 'mts', 'cts'];
+
+const jsExtensions = ['js', 'jsx', 'mjs', 'cjs'];
+
+const defaultExtensions = [...jsExtensions, ...tsExtensions];
+
+/**
+ * Sets files directive to configs that don't have it.
+ *
+ * @param {Linter.Config[]} cfgs
+ * @param {Array<string | string[]>} files
+ *
+ * @returns {Linter.Config[]}
+ * */
+export function addFilesIfNotSet(cfgs, files) {
+	/** @type {Linter.Config[]} */
+	const result = [];
+
+	for (let cfg of cfgs) {
+		if (cfg.files === undefined) {
+			cfg = {...cfg, files};
+		}
+
+		result.push(cfg);
+	}
+	return result;
+}
+
+const xoMinusStylistic = xoConfig[0];
+delete xoMinusStylistic.plugins['@stylistic'];
+for (const rule in xoMinusStylistic.rules) {
+	if (rule.startsWith('@stylistic/')) {
+		delete xoMinusStylistic.rules[rule];
+	}
+}
 
 /** @type {Linter.Config[]} */
 const defaultConfig = [
@@ -39,7 +85,7 @@ const defaultConfig = [
 	nodePlugin.configs['flat/recommended-module'],
 	unicornPlugin.configs['flat/recommended'],
 	eslintPluginNoUseExtendNative.configs.recommended,
-
+	xoMinusStylistic,
 	{
 		rules: {
 			'no-use-extend-native/no-use-extend-native': 'error',
@@ -57,23 +103,22 @@ const defaultConfig = [
 			'unicorn/no-useless-undefined': 'off',
 			'unicorn/prefer-string-raw': 'off',
 			'function-call-argument-newline': 'off',
+			'capitalized-comments': 'off',
 
-			'eslint-comments/disable-enable-pair': ['error', {allowWholeFile: true}],
-			'eslint-comments/no-aggregating-enable': 'error',
-			'eslint-comments/no-duplicate-disable': 'error',
+			'@eslint-community/eslint-comments/disable-enable-pair': ['error', {allowWholeFile: true}],
+			'@eslint-community/eslint-comments/no-aggregating-enable': 'error',
+			'@eslint-community/eslint-comments/no-duplicate-disable': 'error',
 
-			'eslint-comments/no-unused-disable': 'error',
-			'eslint-comments/no-unused-enable': 'error',
+			'@eslint-community/eslint-comments/no-unused-disable': 'error',
+			'@eslint-community/eslint-comments/no-unused-enable': 'error',
 
 			'import/first': 'error',
 			'import/no-unassigned-import': 'off',
 			'import/default': 'error',
 			'import/export': 'error',
 			'import/extensions': ['error', 'always', {ignorePackages: true}],
-			// breaks with modern `import with` syntax + ts is there for that.
-			'import/namespace': 'off',
 			'import/no-absolute-path': 'error',
-			'import/no-anonymous-default-export': 'error',
+			'import/no-anonymous-default-export': 'off',
 			'import/no-named-default': 'error',
 			'import/no-webpack-loader-syntax': 'error',
 			'import/no-self-import': 'error',
@@ -120,6 +165,65 @@ const defaultConfig = [
 	},
 ];
 
+/** @type {Linter.RulesRecord} */
+const jsonRules = {
+	'json/no-duplicate-keys': 'error',
+	'json/no-empty-keys': 'error',
+};
+
+/** @returns {Linter.Config[]} */
+function createJSONConfigs() {
+	return [
+		{
+			plugins: {
+				json: jsonPlugin,
+			},
+			files: ['**/*.json'],
+			language: 'json/json',
+			rules: jsonRules,
+		},
+		{
+			plugins: {
+				json: jsonPlugin,
+			},
+			files: ['**/*.jsonc'],
+			language: 'json/jsonc',
+			rules: jsonRules,
+		},
+		{
+			plugins: {
+				json: jsonPlugin,
+			},
+			files: ['**/*.json5'],
+			language: 'json/json5',
+			rules: jsonRules,
+		},
+	];
+}
+
+/**
+ * @param {Options} [options]
+ */
+function createPrettierConfig(options) {
+	/** @type {string[]} */
+	const prettierFiles = [`**/*.{${jsExtensions.join(',')}}`];
+
+	if (options.markdown) {
+		prettierFiles.push('**/*.md');
+	}
+
+	if (options.json) {
+		prettierFiles.push('**/*.json', '**/*.jsonc', '**/*.json5');
+	}
+
+	if (options.typescript) {
+		prettierFiles.push(`**/*.{${tsExtensions.join(',')}}`);
+	}
+
+	/** @type {Linter.Config} */
+	return {...prettierPlugin, files: prettierFiles};
+}
+
 /**
  * @param {Options} [options]
  * @return {Linter.Config[]}
@@ -127,32 +231,69 @@ const defaultConfig = [
 export function buildConfig(options) {
 	options = {...defaultOptions, ...options};
 
+	const filesDefault = [`**/*.{${defaultExtensions.join(',')}}`];
+
 	/** @type {Linter.Config[]} */
 	const result = [
+		...addFilesIfNotSet(defaultConfig, filesDefault),
 		{
 			languageOptions: {
 				sourceType: 'module',
 				ecmaVersion: 'latest',
+				parserOptions: {
+					ecmaFeatures: {
+						jsx: true,
+					},
+				},
 			},
 		},
 	];
 
-	if (options.globals) {
-		result.push({languageOptions: {globals: globals[options.globals]}});
+	if (options.globals === undefined) {
+		throw new Error('globals options is required');
 	}
 
-	result.push(...defaultConfig);
+	/** @type {Linter.Config} */
+	const globalsCfg = {
+		files: filesDefault,
+		languageOptions: {
+			globals: {
+				...globals.es2025,
+				...globals[options.globals],
+			},
+		},
+	};
 
-	if (options.prettier) {
-		result.push(prettierPlugin);
+	if (options.globals === 'browser') {
+		globalsCfg.rules = {
+			'no-restricted-globals': ['error', ...confusingBrowserGlobals],
+		};
+	}
+	result.push(globalsCfg);
+
+	if (options.json) {
+		result.push(...createJSONConfigs());
+	}
+
+	if (options.markdown) {
+		result.push(...addFilesIfNotSet(markdownPlugin.configs.recommended, ['**/*.md']));
 	}
 
 	if (options.typescript) {
-		result.push(importPlugin.flatConfigs.typescript);
+		result.push(
+			...addFilesIfNotSet(
+				[importPlugin.flatConfigs.typescript, ...xoTypescriptConfig],
+				[`**/*.{${tsExtensions.join(',')}}`]
+			)
+		);
 	}
 
 	if (options.react) {
-		result.push(importPlugin.flatConfigs.react);
+		result.push(...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig], filesDefault));
+	}
+
+	if (options.prettier) {
+		result.push(createPrettierConfig(options));
 	}
 
 	return result;

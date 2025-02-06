@@ -10,3 +10,76 @@
 
 <p><br/>🔬 ESLint configs used in all ver0 projects</p>
 </div>
+
+### Installation
+
+```bash
+yarn add -D @ver0/eslint-config
+```
+
+### Usage
+
+### ESLint configuration
+
+This configuration implies usage of `typescript` and `prettier` by default, even though it is possible to disable
+respective lint rules -- these packages will be installed anyways.
+
+```js filename="eslint.config.js"
+import {buildConfig} from '@ver0/eslint-config';
+
+/** @typedef {import('eslint').Linter} Linter */
+
+/** @type {Linter.Config[]} */
+const cfg = [
+	...buildConfig({
+		globals: 'node',
+		prettier: true,
+		typescript: true,
+		json: true,
+		markdown: true,
+		react: false,
+		vitest: false,
+	}),
+	{
+		files: ['README.md'],
+		language: 'markdown/gfm',
+	},
+];
+
+export default cfg;
+```
+
+Array returned from `buildConfig` function is a list of ESLint configurations that should be spreaded into the final
+configuration.
+
+### Prettier configuration
+
+In order to sync configuration of prettier with ESLint, it is recommended to extend the configuration from this package.
+
+```js filename=".prettierrc.js"
+import ver0Cfg from '@ver0/eslint-config/prettierrc.js';
+
+/**
+ * @type {import("prettier").Config}
+ */
+export default {
+	...ver0Cfg,
+};
+```
+
+`.editorconfig` with according configuration can also be copied from this repo.
+
+```.editorconfig
+[*]
+indent_style = tab
+tab_width = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 120
+
+[*.yml]
+indent_style = space
+indent_size = 2
+```
