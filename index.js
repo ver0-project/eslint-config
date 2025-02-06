@@ -101,13 +101,17 @@ const defaultConfig = [
 		rules: {
 			'no-use-extend-native/no-use-extend-native': 'error',
 
+			// it is a good rule in general, but dialects are project-dependant
+			// in case some project hand to restrict vocabulary, it should be done there.
+			'unicorn/prevent-abbreviations': 'off',
+
 			// nulls are fine!
 			'unicorn/no-null': 'off',
 
 			// the only case when ternaries are okay.
 			'unicorn/prefer-ternary': ['error', 'only-single-line'],
 
-			// too much FPs.
+			// too much FP.
 			'unicorn/consistent-function-scoping': 'off',
 
 			// opinionated.
@@ -151,6 +155,9 @@ const defaultConfig = [
 				},
 			],
 
+			// disabled due to https://github.com/import-js/eslint-plugin-import/issues/3076
+			'import/no-unresolved': 'off',
+
 			'n/file-extension-in-import': ['error', 'always'],
 			'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
 			'n/no-new-require': 'error',
@@ -180,6 +187,56 @@ const defaultConfig = [
 const jsonRules = {
 	'json/no-duplicate-keys': 'error',
 	'json/no-empty-keys': 'error',
+};
+
+/** @type {Linter.RulesRecord} */
+const tsRules = {
+	// toplevel type imports can be wiped out completely.
+	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+
+	// it is defined per project.
+	'@typescript-eslint/naming-convention': 'off',
+	'@typescript-eslint/no-restricted-types': [
+		'error',
+		{
+			types: {
+				object: {
+					message:
+						'The `object` type is hard to use. Use `Record<string, unknown>` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848',
+					fixWith: 'Record<string, unknown>',
+				},
+				Buffer: {
+					message: 'Use Uint8Array instead. See: https://sindresorhus.com/blog/goodbye-nodejs-buffer',
+					suggest: ['Uint8Array'],
+				},
+				'[]': "Don't use the empty array type `[]`. It only allows empty arrays. Use `SomeType[]` instead.",
+				'[[]]':
+					"Don't use `[[]]`. It only allows an array with a single element which is an empty array. Use `SomeType[][]` instead.",
+				'[[[]]]': "Don't use `[[[]]]`. Use `SomeType[][][]` instead.",
+				'[[[[]]]]': 'ur drunk 🤡',
+				'[[[[[]]]]]': '🦄💥',
+			},
+		},
+	],
+};
+
+/** @type {Linter.RulesRecord} */
+const reactRules = {
+	// While using ts with `react-jsx` preset - there
+	// is no need in importing react in each file
+	'react/react-in-jsx-scope': 'off',
+
+	// There is no sense in using prop-types within ts projects
+	'react/require-default-props': 'off',
+	'react/no-unused-prop-types': 'off',
+	'react/prop-types': 'off',
+
+	// Not so convenient in significant amount of cases to
+	// prefix boolean prop with `is` or `has`.
+	'react/boolean-prop-naming': 'off',
+
+	// name is taken from constant name or function name
+	'react/display-name': 'off',
 };
 
 /** @returns {Linter.Config[]} */
@@ -293,14 +350,15 @@ export function buildConfig(options) {
 	if (options.typescript) {
 		result.push(
 			...addFilesIfNotSet(
-				[importPlugin.flatConfigs.typescript, ...xoTypescriptConfig],
+				[importPlugin.flatConfigs.typescript, ...xoTypescriptConfig, {rules: tsRules}],
 				[`**/*.{${tsExtensions.join(',')}}`]
 			)
 		);
 	}
-
 	if (options.react) {
-		result.push(...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig], filesDefault));
+		result.push(
+			...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig, {rules: reactRules}], filesDefault)
+		);
 	}
 
 	result = clearStylisticRules(result);
