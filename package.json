@@ -22,6 +22,7 @@
 	"license": "MIT",
 	"author": "Anton Zinovyev <xog3@yandex.ru>",
 	"type": "module",
+	"main": "index.js",
 	"files": [
 		"index.js",
 		".prettierrc.js",
