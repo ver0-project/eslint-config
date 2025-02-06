@@ -10,6 +10,7 @@ import eslintPluginNoUseExtendNative from 'eslint-plugin-no-use-extend-native';
 import jsonPlugin from '@eslint/json';
 import markdownPlugin from '@eslint/markdown';
 import confusingBrowserGlobals from 'confusing-browser-globals';
+import vitestPlugin from '@vitest/eslint-plugin';
 import xoConfig from 'eslint-config-xo';
 import xoTypescriptConfig from 'eslint-config-xo-typescript';
 import xoReactConfig from 'eslint-config-xo-react';
@@ -360,10 +361,15 @@ export function buildConfig(options) {
 			)
 		);
 	}
+
 	if (options.react) {
 		result.push(
 			...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig, {rules: reactRules}], filesDefault)
 		);
+	}
+
+	if (options.vitest) {
+		result.push(...addFilesIfNotSet([vitestPlugin.configs.recommended], ['**/*.{test,benchmark}.*']));
 	}
 
 	result = clearStylisticRules(result);
