@@ -87,6 +87,90 @@ function clearStylisticRules(cfgs) {
 	});
 }
 
+/** @type {Linter.RulesRecord} */
+const jsRules = {
+	'no-use-extend-native/no-use-extend-native': 'error',
+
+	// it is a good rule in general, but dialects are project-dependant
+	// in case some project hand to restrict vocabulary, it should be done there.
+	'unicorn/prevent-abbreviations': 'off',
+
+	// nulls are fine!
+	'unicorn/no-null': 'off',
+
+	// the only case when ternaries are okay.
+	'unicorn/prefer-ternary': ['error', 'only-single-line'],
+
+	// too much FP.
+	'unicorn/consistent-function-scoping': 'off',
+
+	// opinionated.
+	'unicorn/no-useless-undefined': 'off',
+	'unicorn/prefer-string-raw': 'off',
+	'function-call-argument-newline': 'off',
+	'capitalized-comments': 'off',
+
+	'@eslint-community/eslint-comments/disable-enable-pair': ['error', {allowWholeFile: true}],
+	'@eslint-community/eslint-comments/no-aggregating-enable': 'error',
+	'@eslint-community/eslint-comments/no-duplicate-disable': 'error',
+
+	'@eslint-community/eslint-comments/no-unused-disable': 'error',
+	'@eslint-community/eslint-comments/no-unused-enable': 'error',
+
+	'import/first': 'error',
+	'import/no-unassigned-import': 'off',
+	'import/default': 'error',
+	'import/export': 'error',
+	'import/extensions': ['error', 'always', {ignorePackages: true}],
+	'import/no-absolute-path': 'error',
+	'import/no-anonymous-default-export': 'off',
+	'import/no-named-default': 'error',
+	'import/no-webpack-loader-syntax': 'error',
+	'import/no-self-import': 'error',
+	'import/no-cycle': ['error', {ignoreExternal: true}],
+	'import/no-useless-path-segments': 'error',
+	'import/newline-after-import': 'error',
+	'import/no-amd': 'error',
+	'import/no-duplicates': ['error', {'prefer-inline': false}],
+	'import/no-empty-named-blocks': 'error',
+	'import/no-extraneous-dependencies': ['error', {includeTypes: true}],
+	'import/no-mutable-exports': 'error',
+	'import/no-named-as-default-member': 'error',
+	'import/no-named-as-default': 'error',
+	'import/order': [
+		'error',
+		{
+			groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+			'newlines-between': 'never',
+		},
+	],
+
+	// disabled due to https://github.com/import-js/eslint-plugin-import/issues/3076
+	'import/no-unresolved': 'off',
+
+	'n/file-extension-in-import': ['error', 'always'],
+	'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
+	'n/no-new-require': 'error',
+	'n/no-path-concat': 'error',
+	'n/no-deprecated-api': 'error',
+	'n/process-exit-as-throw': 'error',
+	'n/prefer-global/console': ['error', 'always'],
+	'n/prefer-global/process': ['error', 'never'],
+	'n/prefer-global/text-decoder': ['error', 'always'],
+	'n/prefer-global/text-encoder': ['error', 'always'],
+	'n/prefer-global/url-search-params': ['error', 'always'],
+	'n/prefer-global/url': ['error', 'always'],
+	'n/prefer-promises/dns': 'error',
+	'n/prefer-promises/fs': 'error',
+
+	'promise/prefer-await-to-then': 'error',
+	'promise/param-names': 'error',
+	'promise/no-return-wrap': ['error', {allowReject: true}],
+	'promise/no-new-statics': 'error',
+	'promise/no-return-in-finally': 'error',
+	'promise/valid-params': 'error',
+};
+
 /** @type {Linter.Config[]} */
 const defaultConfig = [
 	jsConfig.configs.recommended,
@@ -98,88 +182,7 @@ const defaultConfig = [
 	eslintPluginNoUseExtendNative.configs.recommended,
 	xoConfig[0],
 	{
-		rules: {
-			'no-use-extend-native/no-use-extend-native': 'error',
-
-			// it is a good rule in general, but dialects are project-dependant
-			// in case some project hand to restrict vocabulary, it should be done there.
-			'unicorn/prevent-abbreviations': 'off',
-
-			// nulls are fine!
-			'unicorn/no-null': 'off',
-
-			// the only case when ternaries are okay.
-			'unicorn/prefer-ternary': ['error', 'only-single-line'],
-
-			// too much FP.
-			'unicorn/consistent-function-scoping': 'off',
-
-			// opinionated.
-			'unicorn/no-useless-undefined': 'off',
-			'unicorn/prefer-string-raw': 'off',
-			'function-call-argument-newline': 'off',
-			'capitalized-comments': 'off',
-
-			'@eslint-community/eslint-comments/disable-enable-pair': ['error', {allowWholeFile: true}],
-			'@eslint-community/eslint-comments/no-aggregating-enable': 'error',
-			'@eslint-community/eslint-comments/no-duplicate-disable': 'error',
-
-			'@eslint-community/eslint-comments/no-unused-disable': 'error',
-			'@eslint-community/eslint-comments/no-unused-enable': 'error',
-
-			'import/first': 'error',
-			'import/no-unassigned-import': 'off',
-			'import/default': 'error',
-			'import/export': 'error',
-			'import/extensions': ['error', 'always', {ignorePackages: true}],
-			'import/no-absolute-path': 'error',
-			'import/no-anonymous-default-export': 'off',
-			'import/no-named-default': 'error',
-			'import/no-webpack-loader-syntax': 'error',
-			'import/no-self-import': 'error',
-			'import/no-cycle': ['error', {ignoreExternal: true}],
-			'import/no-useless-path-segments': 'error',
-			'import/newline-after-import': 'error',
-			'import/no-amd': 'error',
-			'import/no-duplicates': ['error', {'prefer-inline': false}],
-			'import/no-empty-named-blocks': 'error',
-			'import/no-extraneous-dependencies': ['error', {includeTypes: true}],
-			'import/no-mutable-exports': 'error',
-			'import/no-named-as-default-member': 'error',
-			'import/no-named-as-default': 'error',
-			'import/order': [
-				'error',
-				{
-					groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
-					'newlines-between': 'never',
-				},
-			],
-
-			// disabled due to https://github.com/import-js/eslint-plugin-import/issues/3076
-			'import/no-unresolved': 'off',
-
-			'n/file-extension-in-import': ['error', 'always'],
-			'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
-			'n/no-new-require': 'error',
-			'n/no-path-concat': 'error',
-			'n/no-deprecated-api': 'error',
-			'n/process-exit-as-throw': 'error',
-			'n/prefer-global/console': ['error', 'always'],
-			'n/prefer-global/process': ['error', 'never'],
-			'n/prefer-global/text-decoder': ['error', 'always'],
-			'n/prefer-global/text-encoder': ['error', 'always'],
-			'n/prefer-global/url-search-params': ['error', 'always'],
-			'n/prefer-global/url': ['error', 'always'],
-			'n/prefer-promises/dns': 'error',
-			'n/prefer-promises/fs': 'error',
-
-			'promise/prefer-await-to-then': 'error',
-			'promise/param-names': 'error',
-			'promise/no-return-wrap': ['error', {allowReject: true}],
-			'promise/no-new-statics': 'error',
-			'promise/no-return-in-finally': 'error',
-			'promise/valid-params': 'error',
-		},
+		rules: jsRules,
 	},
 ];
 
@@ -191,6 +194,8 @@ const jsonRules = {
 
 /** @type {Linter.RulesRecord} */
 const tsRules = {
+	...jsRules,
+
 	// toplevel type imports can be wiped out completely.
 	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 
