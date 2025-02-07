@@ -1,10 +1,10 @@
 <div align="center">
 <h1>@ver0/eslint-config</h1>
 
-<img alt="NPM Version" src="https://img.shields.io/npm/v/%40ver0%2Feslint-config?style=flat-square">
-<img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40ver0%2Feslint-config?style=flat-square">
-<img alt="Dependents (via libraries.io), scoped npm package" src="https://img.shields.io/librariesio/dependents/npm/%40ver0/eslint-config?style=flat-square">
-<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/ver0-project/eslint-config/ci.yml?style=flat-square">
+[![NPM Version](https://img.shields.io/npm/v/%40ver0%2Feslint-config?style=flat-square)](https://www.npmjs.com/package/@ver0/eslint-config)
+[![NPM Downloads](https://img.shields.io/npm/dm/%40ver0%2Feslint-config?style=flat-square)](https://www.npmjs.com/package/@ver0/eslint-config)
+[![Dependents (via libraries.io), scoped npm package](https://img.shields.io/librariesio/dependents/npm/%40ver0/eslint-config?style=flat-square)](https://www.npmjs.com/package/@ver0/eslint-config)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ver0-project/eslint-config/ci.yml?style=flat-square)](https://github.com/ver0-project/eslint-config/actions)
 
 <p><br/>🔬 ESLint configs used in all ver0 projects</p>
 </div>
