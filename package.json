@@ -61,7 +61,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.7.1",
 		"@commitlint/config-conventional": "^19.7.1",
-		"@react-hookz/eslint-formatter-gha": "^3.0.3",
+		"@ver0/eslint-formatter-gha": "^1.0.1",
 		"commitlint": "^19.7.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.4.3",
