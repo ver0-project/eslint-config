@@ -352,16 +352,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/markdown@npm:^6.2.2":
-  version: 6.2.2
-  resolution: "@eslint/markdown@npm:6.2.2"
+"@eslint/markdown@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@eslint/markdown@npm:6.3.0"
   dependencies:
     "@eslint/core": "npm:^0.10.0"
     "@eslint/plugin-kit": "npm:^0.2.5"
     mdast-util-from-markdown: "npm:^2.0.2"
     mdast-util-gfm: "npm:^3.0.0"
     micromark-extension-gfm: "npm:^3.0.0"
-  checksum: 10c0/f2f81c1a542b0f621831bbd98f538715aa0c55dab47d59189da6f010633c60868f52486dfd475d1beb91f4dfdc2714ff73f7c7a71b2282905aca087651aea1b9
+  checksum: 10c0/a0dbb587325e3d0fbd72380927220cbae61720b8abf2cbfe3835b865b8998508041e44f1f2b856ba6ad54c62924d779ee69ffd3154ee3770ea9f0a44a9d6d9b7
   languageName: node
   linkType: hard
 
@@ -1401,7 +1401,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.4.1"
     "@eslint/js": "npm:^9.21.0"
     "@eslint/json": "npm:^0.10.0"
-    "@eslint/markdown": "npm:^6.2.2"
+    "@eslint/markdown": "npm:^6.3.0"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@vitest/eslint-plugin": "npm:^1.1.36"
     commitlint: "npm:^19.7.1"
