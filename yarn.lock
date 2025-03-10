@@ -521,17 +521,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.22.0":
+"@eslint/js@npm:9.22.0, @eslint/js@npm:^9.22.0":
   version: 9.22.0
   resolution: "@eslint/js@npm:9.22.0"
   checksum: 10c0/5bcd009bb579dc6c6ed760703bdd741e08a48cd9decd677aa2cf67fe66236658cb09a00185a0369f3904e5cffba9e6e0f2ff4d9ba4fdf598fcd81d34c49213a5
-  languageName: node
-  linkType: hard
-
-"@eslint/js@npm:^9.21.0":
-  version: 9.21.0
-  resolution: "@eslint/js@npm:9.21.0"
-  checksum: 10c0/86c24a2668808995037e3f40c758335df2ae277c553ac0cf84381a1a8698f3099d8a22dd9c388947e6b7f93fcc1142f62406072faaa2b83c43ca79993fc01bb3
   languageName: node
   linkType: hard
 
@@ -1594,7 +1587,7 @@ __metadata:
     "@commitlint/cli": "npm:^19.8.0"
     "@commitlint/config-conventional": "npm:^19.7.1"
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.4.1"
-    "@eslint/js": "npm:^9.21.0"
+    "@eslint/js": "npm:^9.22.0"
     "@eslint/json": "npm:^0.10.0"
     "@eslint/markdown": "npm:^6.3.0"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
