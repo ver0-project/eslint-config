@@ -59,7 +59,7 @@
 		"typescript-eslint": "^8.32.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.8.0",
+		"@commitlint/cli": "^19.8.1",
 		"@commitlint/config-conventional": "^19.8.0",
 		"@ver0/eslint-formatter-gha": "^1.0.1",
 		"commitlint": "^19.8.0",
