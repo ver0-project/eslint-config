@@ -55,7 +55,7 @@ configuration.
 In order to sync configuration of prettier with ESLint, it is recommended to extend the configuration from this package.
 
 ```js filename=".prettierrc.js"
-import ver0Cfg from '@ver0/eslint-config/prettierrc.js';
+import ver0Cfg from '@ver0/eslint-config/.prettierrc.js';
 
 /**
  * @type {import("prettier").Config}
