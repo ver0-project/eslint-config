@@ -365,7 +365,8 @@ export function buildConfig(options) {
 			...addFilesIfNotSet(
 				[importPlugin.flatConfigs.typescript, ...xoTypescriptConfig, {rules: tsRules}],
 				[`**/*.{${tsExtensions.join(',')}}`]
-			)
+			),
+			...addFilesIfNotSet([{rules: jsRules}], filesDefault)
 		);
 	}
 
