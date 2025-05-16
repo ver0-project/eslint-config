@@ -150,21 +150,6 @@ const jsRules = {
 	// disabled due to https://github.com/import-js/eslint-plugin-import/issues/3076
 	'import/no-unresolved': 'off',
 
-	'n/file-extension-in-import': ['error', 'always'],
-	'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
-	'n/no-new-require': 'error',
-	'n/no-path-concat': 'error',
-	'n/no-deprecated-api': 'error',
-	'n/process-exit-as-throw': 'error',
-	'n/prefer-global/console': ['error', 'always'],
-	'n/prefer-global/process': ['error', 'never'],
-	'n/prefer-global/text-decoder': ['error', 'always'],
-	'n/prefer-global/text-encoder': ['error', 'always'],
-	'n/prefer-global/url-search-params': ['error', 'always'],
-	'n/prefer-global/url': ['error', 'always'],
-	'n/prefer-promises/dns': 'error',
-	'n/prefer-promises/fs': 'error',
-
 	'promise/prefer-await-to-then': 'error',
 	'promise/param-names': 'error',
 	'promise/no-return-wrap': ['error', {allowReject: true}],
@@ -179,7 +164,6 @@ const defaultConfig = [
 	commentsPlugin.recommended,
 	importPlugin.flatConfigs.recommended,
 	promisePlugin.configs['flat/recommended'],
-	nodePlugin.configs['flat/recommended-module'],
 	unicornPlugin.configs['flat/recommended'],
 	eslintPluginNoUseExtendNative.configs.recommended,
 	xoConfig[0],
@@ -187,6 +171,24 @@ const defaultConfig = [
 		rules: jsRules,
 	},
 ];
+
+/** @type {Linter.RulesRecord} */
+const nodeRules = {
+	'n/file-extension-in-import': ['error', 'always'],
+	'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
+	'n/no-new-require': 'error',
+	'n/no-path-concat': 'error',
+	'n/no-deprecated-api': 'error',
+	'n/process-exit-as-throw': 'error',
+	'n/prefer-global/console': ['error', 'always'],
+	'n/prefer-global/process': ['error', 'never'],
+	'n/prefer-global/text-decoder': ['error', 'always'],
+	'n/prefer-global/text-encoder': ['error', 'always'],
+	'n/prefer-global/url-search-params': ['error', 'always'],
+	'n/prefer-global/url': ['error', 'always'],
+	'n/prefer-promises/dns': 'error',
+	'n/prefer-promises/fs': 'error',
+};
 
 /** @type {Linter.RulesRecord} */
 const jsonRules = {
@@ -345,6 +347,10 @@ export function buildConfig(options) {
 		};
 	}
 	result.push(globalsCfg);
+
+	if (options.globals === 'node') {
+		result.push(...addFilesIfNotSet([nodePlugin.configs['flat/recommended-module'], {rules: nodeRules}], filesDefault));
+	}
 
 	if (options.json) {
 		result.push(...createJSONConfigs());

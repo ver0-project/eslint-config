@@ -23,7 +23,7 @@ This configuration implies usage of `typescript` and `prettier` by default, even
 respective lint rules -- these packages will be installed anyways.
 
 ```js filename="eslint.config.js"
-import {buildConfig} from '@ver0/eslint-config';
+import { buildConfig } from '@ver0/eslint-config';
 
 /** @typedef {import('eslint').Linter} Linter */
 
@@ -49,6 +49,9 @@ export default cfg;
 
 Array returned from `buildConfig` function is a list of ESLint configurations that should be spreaded into the final
 configuration.
+
+Globals configuration also controls some configs and plugins.
+In case globals is set to `node` - it enables `node` plugin and `node` environment.
 
 ### Prettier configuration
 
