@@ -66,6 +66,24 @@ export function addFilesIfNotSet(cfgs, files) {
 }
 
 /**
+ * Excludes configs that's language are prefixed with the given prefix.
+ *
+ * @param {Linter.Config[]} cfgs
+ * @param {string} prefix
+ *
+ * @returns {Linter.Config[]}
+ */
+function excludeByLanguagePrefix(cfgs, prefix) {
+	return cfgs.filter((cfg) => {
+		if (cfg.language === undefined) {
+			return true;
+		}
+
+		return !cfg.language.startsWith(prefix);
+	});
+}
+
+/**
  * @param {Linter.Config[]} cfgs
  *
  * @returns {Linter.Config[]}
@@ -361,9 +379,11 @@ export function buildConfig(options) {
 	}
 
 	if (options.typescript) {
+		const xoCfg = excludeByLanguagePrefix(xoTypescriptConfig, 'json/');
+
 		result.push(
 			...addFilesIfNotSet(
-				[importPlugin.flatConfigs.typescript, ...xoTypescriptConfig, {rules: tsRules}],
+				[importPlugin.flatConfigs.typescript, ...xoCfg, {rules: tsRules}],
 				[`**/*.{${tsExtensions.join(',')}}`]
 			),
 			...addFilesIfNotSet([{rules: jsRules}], filesDefault)
@@ -371,9 +391,9 @@ export function buildConfig(options) {
 	}
 
 	if (options.react) {
-		result.push(
-			...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoReactConfig, {rules: reactRules}], filesDefault)
-		);
+		const xoCfg = excludeByLanguagePrefix(xoReactConfig, 'json/');
+
+		result.push(...addFilesIfNotSet([importPlugin.flatConfigs.react, ...xoCfg, {rules: reactRules}], filesDefault));
 	}
 
 	if (options.vitest) {
