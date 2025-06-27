@@ -1,4 +1,5 @@
 *
+!configs/
 !index.js
 !.prettierrc.js
 !.editorconfig

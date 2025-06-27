@@ -1,17 +1,21 @@
+import {defineConfig} from 'eslint/config';
 import {buildConfig} from './index.js';
 
-/** @typedef {import('eslint').Linter} Linter */
-
-/** @type {Linter.Config[]} */
-const cfg = [
+export default defineConfig(
 	...buildConfig({
 		globals: 'node',
+		json: true,
+		markdown: true,
 		typescript: false,
 	}),
 	{
 		files: ['README.md'],
 		language: 'markdown/gfm',
 	},
-];
-
-export default cfg;
+	{
+		files: ['index.js'],
+		rules: {
+			'n/no-unpublished-import': 'off', // supposedly it does not treat negation in .npmignore correctly
+		},
+	}
+);
