@@ -8,72 +8,144 @@
 
 <br/>
 
-<p>🔬 ESLint configs used in all ver0 projects</p>
+<p>🔬 A comprehensive ESLint configuration used across all ver0 projects</p>
 
 </div>
 
-### Installation
+## ✨ What's Included
+
+This config brings together the best ESLint rules and plugins to help you write clean, consistent code. Here's what you
+get out of the box:
+
+### 🎯 **Core Features**
+
+- **JavaScript & TypeScript** - Full support for modern JS/TS syntax
+- **React Support** - Optional React-specific linting rules
+- **Node.js Integration** - Node-specific rules when targeting server environments
+- **JSON Linting** - Support for `.json`, `.jsonc`, and `.json5` files
+- **Markdown Linting** - Keep your documentation consistent
+- **Vitest Testing** - Specialized rules for Vitest test files
+- **Prettier Integration** - Seamlessly works with Prettier formatting
+
+### 📦 **Supported File Types**
+
+- **JavaScript**: `.js`, `.jsx`, `.mjs`, `.cjs`
+- **TypeScript**: `.ts`, `.tsx`, `.mts`, `.cts`
+- **JSON**: `.json`, `.jsonc`, `.json5`
+- **Markdown**: `.md`
+- **Tests**: `.test.*`, `.benchmark.*`
+
+### 🔧 **Included Plugins & Configs**
+
+- ESLint recommended rules
+- XO configuration (both JS and TS)
+- Import/export validation and sorting
+- Unicorn (modern JS practices)
+- Promise best practices
+- ESLint comments management
+- TypeScript-specific linting
+- React hooks and JSX rules (when enabled)
+- And many more quality-of-life improvements!
+
+## 🚀 Installation
 
 ```bash
 yarn add -D @ver0/eslint-config
 ```
 
-### Usage
+## 📖 Usage
 
-### ESLint configuration
+### ESLint Configuration
 
-This configuration implies usage of `typescript` and `prettier` by default, even though it is possible to disable
-respective lint rules -- these packages will be installed anyways.
+Setting up your ESLint config is straightforward! The configuration assumes you're using TypeScript and Prettier by
+default (though you can disable specific features if needed).
 
-```js filename="eslint.config.js"
+```js
+// eslint.config.js
+import {defineConfig} from 'eslint/config';
 import {buildConfig} from '@ver0/eslint-config';
 
-/** @typedef {import('eslint').Linter} Linter */
-
-/** @type {Linter.Config[]} */
-const cfg = [
+export default defineConfig(
 	...buildConfig({
 		globals: 'node',
-		prettier: true,
 		typescript: true,
+		typescriptUnsafe: true,
+		vitest: true,
 		json: true,
 		markdown: true,
-		react: false,
-		vitest: false,
+		react: true,
 	}),
 	{
 		files: ['README.md'],
 		language: 'markdown/gfm',
-	},
-];
-
-export default cfg;
+	}
+	// ... any other configs on your taste...
+);
 ```
 
-Array returned from `buildConfig` function is a list of ESLint configurations that should be spreaded into the final
-configuration.
+### 🎛️ Configuration Options
 
-Globals configuration also controls some configs and plugins. In case globals is set to `node` - it enables `node`
-plugin and `node` environment.
+| Option             | Type      | Default  | Description                                                     |
+| ------------------ | --------- | -------- | --------------------------------------------------------------- |
+| `globals`          | `string`  | `'node'` | **Required.** Environment globals (`'node'`, `'browser'`, etc.) |
+| `prettier`         | `boolean` | `true`   | Enable Prettier integration and formatting rules                |
+| `typescript`       | `boolean` | `true`   | Enable TypeScript-specific linting rules                        |
+| `typescriptUnsafe` | `boolean` | `false`  | Disable TypeScript's strict safety rules                        |
+| `json`             | `boolean` | `true`   | Enable JSON/JSONC/JSON5 file linting                            |
+| `markdown`         | `boolean` | `true`   | Enable Markdown file linting                                    |
+| `react`            | `boolean` | `false`  | Enable React and JSX-specific rules                             |
+| `vitest`           | `boolean` | `false`  | Enable Vitest testing framework rules                           |
 
-### Prettier configuration
+### 🌟 Common Configurations
 
-In order to sync configuration of prettier with ESLint, it is recommended to extend the configuration from this package.
+**For a Node.js API project:**
 
-```js filename=".prettierrc.js"
-import ver0Cfg from '@ver0/eslint-config/.prettierrc.js';
+```js
+// eslint.config.js
+import {defineConfig} from 'eslint/config';
+import {buildConfig} from '@ver0/eslint-config';
 
-/**
- * @type {import("prettier").Config}
- */
+export default defineConfig(
+	...buildConfig({
+		globals: 'node',
+		vitest: true, // if you're using Vitest for testing
+	})
+	// ... any other configs on your taste...
+);
+```
+
+**For a React web application:**
+
+```js
+export default buildConfig({
+	globals: 'browser',
+	react: true,
+	vitest: true,
+});
+```
+
+### 🎨 Prettier Configuration
+
+This package also provides opininated default Prettier configuration, that you can extend from.
+
+```js
+// .prettierrc.js
+import ver0Config from '@ver0/eslint-config/.prettierrc.js';
+
 export default {
-	...ver0Cfg,
+	...ver0Config,
+	// Override any settings if needed
+	// printWidth: 100,
 };
 ```
 
-`.editorconfig` with according configuration can also be copied from this repo.
+### ⚙️ EditorConfig
 
-```.editorconfig
+For consistent formatting across different editors, you can copy our `.editorconfig` that is aligned with our Prettier
+configuration:
+
+```ini
+# .editorconfig
 [*]
 indent_style = tab
 tab_width = 2
@@ -86,4 +158,20 @@ max_line_length = 120
 [*.yml]
 indent_style = space
 indent_size = 2
+```
+
+## 🛠️ Troubleshooting
+
+**Rules conflicting with your existing setup?** You can override specific rules by adding them after our config:
+
+```js
+// eslint.config.js
+import {defineConfig} from 'eslint/config';
+import {buildConfig} from '@ver0/eslint-config';
+
+export default defineConfig(...buildConfig({globals: 'node'}), {
+	rules: {
+		'some-rule': 'off', // Override any rule
+	},
+});
 ```
