@@ -6,7 +6,10 @@
 [![Dependents (via libraries.io), scoped npm package](https://img.shields.io/librariesio/dependents/npm/%40ver0/eslint-config?style=flat-square)](https://www.npmjs.com/package/@ver0/eslint-config)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ver0-project/eslint-config/ci.yml?style=flat-square)](https://github.com/ver0-project/eslint-config/actions)
 
-<p><br/>🔬 ESLint configs used in all ver0 projects</p>
+<br/>
+
+<p>🔬 ESLint configs used in all ver0 projects</p>
+
 </div>
 
 ### Installation
@@ -23,7 +26,7 @@ This configuration implies usage of `typescript` and `prettier` by default, even
 respective lint rules -- these packages will be installed anyways.
 
 ```js filename="eslint.config.js"
-import { buildConfig } from '@ver0/eslint-config';
+import {buildConfig} from '@ver0/eslint-config';
 
 /** @typedef {import('eslint').Linter} Linter */
 
@@ -50,8 +53,8 @@ export default cfg;
 Array returned from `buildConfig` function is a list of ESLint configurations that should be spreaded into the final
 configuration.
 
-Globals configuration also controls some configs and plugins.
-In case globals is set to `node` - it enables `node` plugin and `node` environment.
+Globals configuration also controls some configs and plugins. In case globals is set to `node` - it enables `node`
+plugin and `node` environment.
 
 ### Prettier configuration
 

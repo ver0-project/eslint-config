@@ -1,0 +1,14 @@
+import vitestPlugin from '@vitest/eslint-plugin';
+import {GLOBS} from './constants.js';
+
+/**
+ * @description Create a new vitest config.
+ *
+ * @returns {Linter.Config}
+ */
+export function newVitestConfig() {
+	return {
+		files: [GLOBS.TEST],
+		extends: [vitestPlugin.configs.recommended],
+	};
+}
