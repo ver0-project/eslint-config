@@ -2,20 +2,27 @@ import xoTypescriptConfig from 'eslint-config-xo-typescript';
 import {GLOBS} from './constants.js';
 import {newJavaScriptConfig} from './javascript.js';
 
-/** @typedef {Object} TypeScriptConfig */
-
-/** @type {boolean} typescriptUnsafe */
+/** @typedef {Object} TypeScriptConfig
+ *  @property {boolean} [typescriptUnsafe] - whether to disable no-unsafe rules
+ */
 
 /**
  * @description Create a new typescript config.
  *
  * @param {TypeScriptConfig} options
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newTypeScriptConfig(options) {
 	const jsConfig = newJavaScriptConfig();
 
+	// stylistic plugin is already defined in base js config, so we have to remove it from xo's config
+	// to avoid conflicts.
+	for (const cfg of xoTypescriptConfig) {
+		delete cfg.plugins['@stylistic'];
+	}
+
 	return {
+		name: 'typescript config',
 		files: [GLOBS.TS],
 		extends: [...jsConfig.extends, xoTypescriptConfig],
 		rules: {

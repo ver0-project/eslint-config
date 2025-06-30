@@ -4,10 +4,11 @@ import {GLOBS} from './constants.js';
 /**
  * @description Create a new node config.
  *
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newNodeConfig() {
 	return {
+		name: 'node config',
 		files: [GLOBS.JS, GLOBS.TS],
 		extends: [nodePlugin.configs['flat/recommended-module']],
 		rules: {

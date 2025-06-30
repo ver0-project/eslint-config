@@ -5,10 +5,11 @@ import {GLOBS} from './constants.js';
 /**
  * @description Create a new react config.
  *
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newReactConfig() {
 	return {
+		name: 'react config',
 		files: [GLOBS.JS, GLOBS.TS],
 		extends: [importPlugin.flatConfigs.react, xoReactConfig],
 		rules: {

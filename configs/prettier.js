@@ -12,7 +12,7 @@ import {GLOBS} from './constants.js';
  * @description Create a new prettier config, with the given options.
  *
  * @param options {PrettierConfigOptions}
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newPrettierConfig(options) {
 	/** @type {string[]} */
@@ -31,6 +31,7 @@ export function newPrettierConfig(options) {
 	}
 
 	return {
+		name: 'prettier config',
 		files,
 		extends: [prettierPlugin],
 		rules: {

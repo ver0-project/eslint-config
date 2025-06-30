@@ -10,10 +10,11 @@ import {GLOBS} from './constants.js';
 /**
  * @description Create a new javascript config.
  *
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newJavaScriptConfig() {
 	return {
+		name: 'JavaScript config',
 		files: [GLOBS.JS],
 		extends: [
 			jsConfig.configs.recommended,

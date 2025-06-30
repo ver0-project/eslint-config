@@ -4,10 +4,11 @@ import {GLOBS} from './constants.js';
 /**
  * @description Create a new vitest config.
  *
- * @returns {Linter.Config}
+ * @returns {import("eslint").Linter.Config}
  */
 export function newVitestConfig() {
 	return {
+		name: 'vitest config',
 		files: [GLOBS.TEST],
 		extends: [vitestPlugin.configs.recommended],
 	};
