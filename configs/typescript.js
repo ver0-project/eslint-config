@@ -15,12 +15,6 @@ import {newJavaScriptConfig} from './javascript.js';
 export function newTypeScriptConfig(options) {
 	const jsConfig = newJavaScriptConfig();
 
-	// stylistic plugin is already defined in base js config, so we have to remove it from xo's config
-	// to avoid conflicts.
-	for (const cfg of xoTypescriptConfig) {
-		delete cfg.plugins['@stylistic'];
-	}
-
 	return {
 		name: 'typescript config',
 		files: [GLOBS.TS],
