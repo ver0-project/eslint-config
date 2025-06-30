@@ -6,7 +6,7 @@ export default {
 	tabWidth: 2,
 	printWidth: 120,
 	endOfLine: 'lf',
-	trailingComma: 'es5',
+	trailingComma: 'all',
 	semi: true,
 	singleQuote: true,
 	bracketSameLine: true,

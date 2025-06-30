@@ -17,5 +17,5 @@ export default defineConfig(
 		rules: {
 			'n/no-unpublished-import': 'off', // supposedly it does not treat negation in .npmignore correctly
 		},
-	}
+	},
 );

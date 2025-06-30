@@ -78,7 +78,7 @@ export default defineConfig(
 	{
 		files: ['README.md'],
 		language: 'markdown/gfm',
-	}
+	},
 	// ... any other configs on your taste...
 );
 ```
@@ -109,7 +109,7 @@ export default defineConfig(
 	...buildConfig({
 		globals: 'node',
 		vitest: true, // if you're using Vitest for testing
-	})
+	}),
 	// ... any other configs on your taste...
 );
 ```
@@ -117,11 +117,18 @@ export default defineConfig(
 **For a React web application:**
 
 ```js
-export default buildConfig({
-	globals: 'browser',
-	react: true,
-	vitest: true,
-});
+// eslint.config.js
+import {defineConfig} from 'eslint/config';
+import {buildConfig} from '@ver0/eslint-config';
+
+export default defineConfig(
+	...buildConfig({
+		globals: 'browser',
+		react: true,
+		vitest: true,
+	}),
+	// ... any other configs on your taste...
+);
 ```
 
 ### 🎨 Prettier Configuration

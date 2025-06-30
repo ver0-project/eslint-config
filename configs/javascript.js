@@ -35,13 +35,11 @@ export function newJavaScriptConfig() {
 			// Nulls are fine!
 			'unicorn/no-null': 'off',
 
-			// The only case when ternaries are okay.
-			'unicorn/prefer-ternary': ['error', 'only-single-line'],
-
 			// Too much FP.
 			'unicorn/consistent-function-scoping': 'off',
 
 			// Opinionated.
+			'unicorn/prefer-ternary': 'off',
 			'unicorn/no-useless-undefined': 'off',
 			'unicorn/prefer-string-raw': 'off',
 			'function-call-argument-newline': 'off',
@@ -92,6 +90,8 @@ export function newJavaScriptConfig() {
 			'promise/no-new-statics': 'error',
 			'promise/no-return-in-finally': 'error',
 			'promise/valid-params': 'error',
+
+			'@stylistic/curly-newline': 'off',
 		},
 	};
 }
