@@ -398,9 +398,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/markdown@npm:^6.6.0":
-  version: 6.6.0
-  resolution: "@eslint/markdown@npm:6.6.0"
+"@eslint/markdown@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@eslint/markdown@npm:7.0.0"
   dependencies:
     "@eslint/core": "npm:^0.14.0"
     "@eslint/plugin-kit": "npm:^0.3.1"
@@ -410,7 +410,7 @@ __metadata:
     mdast-util-gfm: "npm:^3.0.0"
     micromark-extension-frontmatter: "npm:^2.0.0"
     micromark-extension-gfm: "npm:^3.0.0"
-  checksum: 10c0/53abb2a68e418a11c92f3c871e67e0e4cf1144a94218634f4f829888918853022abf227b21cff16beacd881574f7e01b402c51e35c3ddf12953ce582bd165daa
+  checksum: 10c0/bacd3dedbe053afe46c674027d36211bc52faef091cba9faf6893ccdbcc8052f9ee6323e493d8a97e0634fbd2b7c7975babb0dcb2770956f095ce4fe46cf9764
   languageName: node
   linkType: hard
 
@@ -1490,7 +1490,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.5.0"
     "@eslint/js": "npm:^9.30.1"
     "@eslint/json": "npm:^0.12.0"
-    "@eslint/markdown": "npm:^6.6.0"
+    "@eslint/markdown": "npm:^7.0.0"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@vitest/eslint-plugin": "npm:^1.3.4"
     commitlint: "npm:^19.8.1"
