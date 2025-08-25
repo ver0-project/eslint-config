@@ -42,7 +42,7 @@
 		"@eslint/markdown": "^7.1.0",
 		"@vitest/eslint-plugin": "^1.3.4",
 		"confusing-browser-globals": "^1.0.11",
-		"eslint": "^9.33.0",
+		"eslint": "^9.34.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-config-xo": "^0.48.0",
 		"eslint-config-xo-react": "^0.28.0",
