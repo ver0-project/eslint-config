@@ -440,19 +440,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/markdown@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "@eslint/markdown@npm:7.1.0"
+"@eslint/markdown@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@eslint/markdown@npm:7.2.0"
   dependencies:
-    "@eslint/core": "npm:^0.15.1"
-    "@eslint/plugin-kit": "npm:^0.3.4"
+    "@eslint/core": "npm:^0.15.2"
+    "@eslint/plugin-kit": "npm:^0.3.5"
     github-slugger: "npm:^2.0.0"
     mdast-util-from-markdown: "npm:^2.0.2"
     mdast-util-frontmatter: "npm:^2.0.1"
     mdast-util-gfm: "npm:^3.1.0"
     micromark-extension-frontmatter: "npm:^2.0.0"
     micromark-extension-gfm: "npm:^3.0.0"
-  checksum: 10c0/96d53aeefebd5107fbcafc5549e397d131d79d78cf028737e313f92b1d57314e18992fc3e1998f17f9977a3a310baa0bdadeb2ecf4edde8bb6df5c557d3fccd9
+    micromark-util-normalize-identifier: "npm:^2.0.1"
+  checksum: 10c0/e9ec365ab0eb069c236fbf48170f147a559119182b939483f9a2ede7268fd112e81dbfedbcb7fcc20cc30617d2b51b52e587acfd9abf025bb219ac933aec6218
   languageName: node
   linkType: hard
 
@@ -1507,7 +1508,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.5.0"
     "@eslint/js": "npm:^9.33.0"
     "@eslint/json": "npm:^0.13.1"
-    "@eslint/markdown": "npm:^7.1.0"
+    "@eslint/markdown": "npm:^7.2.0"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@vitest/eslint-plugin": "npm:^1.3.4"
     commitlint: "npm:^19.8.1"
@@ -5742,7 +5743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromark-util-normalize-identifier@npm:^2.0.0":
+"micromark-util-normalize-identifier@npm:^2.0.0, micromark-util-normalize-identifier@npm:^2.0.1":
   version: 2.0.1
   resolution: "micromark-util-normalize-identifier@npm:2.0.1"
   dependencies:
