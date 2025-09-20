@@ -74,9 +74,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: "disable postinstall"
-        run: yarn pinst --disable
-
       - name: "Release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
