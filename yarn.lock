@@ -334,6 +334,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/core@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@eslint/core@npm:1.1.0"
+  dependencies:
+    "@types/json-schema": "npm:^7.0.15"
+  checksum: 10c0/0f875d6f24fbf67cc796e01c2ca82884f755488052ed84183e56377c5b90fe10b491a26e600642db4daea1d5d8ab7906ec12f2bd5cbdb5004b0ef73c802bdb57
+  languageName: node
+  linkType: hard
+
 "@eslint/css-tree@npm:^3.6.1":
   version: 3.6.5
   resolution: "@eslint/css-tree@npm:3.6.5"
@@ -436,6 +445,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/json@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@eslint/json@npm:1.0.1"
+  dependencies:
+    "@eslint/core": "npm:^1.1.0"
+    "@eslint/plugin-kit": "npm:^0.6.0"
+    "@humanwhocodes/momoa": "npm:^3.3.10"
+    natural-compare: "npm:^1.4.0"
+  checksum: 10c0/9d1288e63557fbcea415ac069625192e91d62513a4e4c9abd67e4a2cfa2e2ff04e02572d78ca40aad468d243db8043070ae314a281b417066e87d92fcc6ac3d6
+  languageName: node
+  linkType: hard
+
 "@eslint/markdown@npm:^7.5.1":
   version: 7.5.1
   resolution: "@eslint/markdown@npm:7.5.1"
@@ -487,6 +508,16 @@ __metadata:
     "@eslint/core": "npm:^1.0.1"
     levn: "npm:^0.4.1"
   checksum: 10c0/877ecb0ccad8eddd9f066821bdee4d6839aa1afc621a5b9442443854beab8d2d2198467481d8a9c2d0df860ca5b7fac177b83ad8b786c34ba221e59d59307e77
+  languageName: node
+  linkType: hard
+
+"@eslint/plugin-kit@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@eslint/plugin-kit@npm:0.6.0"
+  dependencies:
+    "@eslint/core": "npm:^1.1.0"
+    levn: "npm:^0.4.1"
+  checksum: 10c0/1d726338a9f4537fe2848796c44d801093ea3a99166dbc45bc6f7742fa2ad74ce0c2f114092ce4460710a9dfe5ea6e3500446f81842388bf81328c97c3a43d9d
   languageName: node
   linkType: hard
 
@@ -1624,7 +1655,7 @@ __metadata:
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.6.0"
     "@eslint/js": "npm:^10.0.1"
-    "@eslint/json": "npm:^1.0.0"
+    "@eslint/json": "npm:^1.0.1"
     "@eslint/markdown": "npm:^7.5.1"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@vitest/eslint-plugin": "npm:^1.6.7"
