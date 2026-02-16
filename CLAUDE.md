@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Lint with fix:** `yarn lint:fix`
 - **Install dependencies:** `yarn`
 
+**Package manager:** Yarn v4+ (Berry). All commands should be run with `yarn`.
+
 There is no build step or test suite. The package ships plain JS.
 
 ## Project Overview
