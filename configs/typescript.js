@@ -50,6 +50,12 @@ export function newTypeScriptConfig(options) {
 				},
 			],
 
+			// Use TS-aware version instead of base rule (upcoming in xo-typescript)
+			'no-unused-private-class-members': 'off',
+			'@typescript-eslint/no-unused-private-class-members': 'error',
+			'@typescript-eslint/no-useless-default-assignment': 'error',
+			'@typescript-eslint/strict-void-return': 'error',
+
 			...(options.typescriptUnsafe
 				? {
 						'@typescript-eslint/no-unsafe-argument': 'off',
