@@ -8,132 +8,149 @@
 
 <br/>
 
-<p>🔬 A comprehensive ESLint configuration used across all ver0 projects</p>
+<p>🔬 A modular ESLint configuration used across all ver0 projects</p>
 
 </div>
 
 ## ✨ What's Included
 
-This config brings together the best ESLint rules and plugins to help you write clean, consistent code. Here's what you
-get out of the box:
+A collection of modular ESLint configs — import only what you need and compose them with `defineConfig()`.
 
-### 🎯 **Core Features**
-
-- **JavaScript & TypeScript** - Full support for modern JS/TS syntax
-- **React Support** - Optional React-specific linting rules
-- **Node.js Integration** - Node-specific rules when targeting server environments
-- **JSON Linting** - Support for `.json`, `.jsonc`, and `.json5` files
-- **Markdown Linting** - Keep your documentation consistent
-- **Vitest Testing** - Specialized rules for Vitest test files
-- **Prettier Integration** - Seamlessly works with Prettier formatting
-
-### 📦 **Supported File Types**
-
-- **JavaScript**: `.js`, `.jsx`, `.mjs`, `.cjs`
-- **TypeScript**: `.ts`, `.tsx`, `.mts`, `.cts`
-- **JSON**: `.json`, `.jsonc`, `.json5`
-- **Markdown**: `.md`
-- **Tests**: `.test.*`, `.benchmark.*`
-
-### 🔧 **Included Plugins & Configs**
-
-- ESLint recommended rules
-- XO configuration (both JS and TS)
-- Import/export validation and sorting
-- Unicorn (modern JS practices)
-- Promise best practices
-- ESLint comments management
-- TypeScript-specific linting
-- React hooks and JSX rules (when enabled)
-- And many more quality-of-life improvements!
+- **JavaScript** — base rules, import sorting, unicorn, promise, ESLint comments
+- **TypeScript** — type-aware linting via XO TypeScript config
+- **React** — JSX, hooks, and import rules
+- **Node.js** — Node globals and `eslint-plugin-n` rules
+- **Browser** — browser globals and restricted globals
+- **JSON** — `.json`, `.jsonc`, `.json5` linting
+- **Markdown** — Markdown linting
+- **Vitest** — test file rules
+- **Prettier** — formatting integration
 
 ## 🚀 Installation
 
 ```bash
-yarn add -D @ver0/eslint-config
+yarn add -D @ver0/eslint-config eslint
 ```
+
+Each config requires its own peer dependencies — see [Available Configs](#-available-configs) below.
 
 ## 📖 Usage
 
-### ESLint Configuration
-
-Setting up your ESLint config is straightforward! The configuration assumes you're using TypeScript and Prettier by
-default (though you can disable specific features if needed).
+Import the configs you need and compose them with `defineConfig()`:
 
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import {buildConfig} from '@ver0/eslint-config';
+import javascript from '@ver0/eslint-config/javascript';
+import node from '@ver0/eslint-config/node';
+import json from '@ver0/eslint-config/json';
+import markdown from '@ver0/eslint-config/markdown';
+import prettier from '@ver0/eslint-config/prettier';
 
-export default defineConfig(
-	...buildConfig({
-		globals: 'node',
-		typescript: true,
-		typescriptUnsafe: true,
-		vitest: true,
-		json: true,
-		markdown: true,
-		react: true,
-	}),
-	{
-		files: ['README.md'],
-		language: 'markdown/gfm',
-	},
-	// ... any other configs on your taste...
-);
+export default defineConfig(javascript, node, ...json, markdown, prettier);
 ```
 
-### 🎛️ Configuration Options
+> **Note:** The JSON config exports an array of 3 configs (JSON, JSONC, JSON5), so spread it with `...json`.
 
-| Option             | Type      | Default  | Description                                                     |
-| ------------------ | --------- | -------- | --------------------------------------------------------------- |
-| `globals`          | `string`  | `'node'` | **Required.** Environment globals (`'node'`, `'browser'`, etc.) |
-| `prettier`         | `boolean` | `true`   | Enable Prettier integration and formatting rules                |
-| `typescript`       | `boolean` | `true`   | Enable TypeScript-specific linting rules                        |
-| `typescriptUnsafe` | `boolean` | `false`  | Disable TypeScript's strict safety rules                        |
-| `json`             | `boolean` | `true`   | Enable JSON/JSONC/JSON5 file linting                            |
-| `markdown`         | `boolean` | `true`   | Enable Markdown file linting                                    |
-| `react`            | `boolean` | `false`  | Enable React and JSX-specific rules                             |
-| `vitest`           | `boolean` | `false`  | Enable Vitest testing framework rules                           |
+## 📦 Available Configs
 
-### 🌟 Common Configurations
+Each config is a standalone module. Import it to enable, skip it to disable — no options object needed. If the required
+peer dependencies are not installed, you'll get a clear error listing exactly what's missing.
 
-**For a Node.js API project:**
+- **JavaScript** — base rules, import sorting, unicorn, promise, ESLint comments. Always include this one — other
+  configs build on top of it.
+
+  ```bash
+  yarn add -D @eslint/js @eslint-community/eslint-plugin-eslint-comments eslint-plugin-import eslint-plugin-promise eslint-plugin-unicorn eslint-plugin-no-use-extend-native eslint-config-xo
+  ```
+
+- **TypeScript** — type-aware linting rules. Also exports `typescriptUnsafe` to disable strict type-safety rules.
+
+  ```bash
+  yarn add -D eslint-config-xo-typescript typescript
+  ```
+
+- **React** — React, JSX, and hooks rules.
+
+  ```bash
+  yarn add -D eslint-plugin-import eslint-config-xo-react
+  ```
+
+- **Node.js** — Node.js globals and `eslint-plugin-n` rules.
+
+  ```bash
+  yarn add -D globals eslint-plugin-n
+  ```
+
+- **Browser** — browser globals and restricted globals (prevents accidental use of confusing browser globals like
+  `event`, `name`, etc.).
+
+  ```bash
+  yarn add -D globals confusing-browser-globals
+  ```
+
+- **JSON** — linting for `.json`, `.jsonc`, and `.json5` files. Exports an array of 3 configs — spread it with `...json`
+  in `defineConfig()`.
+
+  ```bash
+  yarn add -D @eslint/json
+  ```
+
+- **Markdown** — Markdown linting.
+
+  ```bash
+  yarn add -D @eslint/markdown
+  ```
+
+- **Vitest** — rules for test and benchmark files (`*.test.*`, `*.benchmark.*`).
+
+  ```bash
+  yarn add -D @vitest/eslint-plugin
+  ```
+
+- **Prettier** — formatting integration. Include this last so it overrides conflicting rules.
+
+  ```bash
+  yarn add -D eslint-plugin-prettier eslint-config-prettier prettier
+  ```
+
+## 🌟 Common Configurations
+
+**Node.js API project:**
 
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import {buildConfig} from '@ver0/eslint-config';
+import javascript from '@ver0/eslint-config/javascript';
+import typescript from '@ver0/eslint-config/typescript';
+import node from '@ver0/eslint-config/node';
+import json from '@ver0/eslint-config/json';
+import markdown from '@ver0/eslint-config/markdown';
+import vitest from '@ver0/eslint-config/vitest';
+import prettier from '@ver0/eslint-config/prettier';
 
-export default defineConfig(
-	...buildConfig({
-		globals: 'node',
-		vitest: true, // if you're using Vitest for testing
-	}),
-	// ... any other configs on your taste...
-);
+export default defineConfig(javascript, typescript, node, ...json, markdown, vitest, prettier);
 ```
 
-**For a React web application:**
+**React web application:**
 
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import {buildConfig} from '@ver0/eslint-config';
+import javascript from '@ver0/eslint-config/javascript';
+import typescript from '@ver0/eslint-config/typescript';
+import react from '@ver0/eslint-config/react';
+import browser from '@ver0/eslint-config/browser';
+import json from '@ver0/eslint-config/json';
+import vitest from '@ver0/eslint-config/vitest';
+import prettier from '@ver0/eslint-config/prettier';
 
-export default defineConfig(
-	...buildConfig({
-		globals: 'browser',
-		react: true,
-		vitest: true,
-	}),
-	// ... any other configs on your taste...
-);
+export default defineConfig(javascript, typescript, react, browser, ...json, vitest, prettier);
 ```
 
 ### 🎨 Prettier Configuration
 
-This package also provides opininated default Prettier configuration, that you can extend from.
+This package also provides an opinionated default Prettier configuration that you can extend from.
 
 ```js
 // .prettierrc.js
@@ -169,14 +186,16 @@ indent_size = 2
 
 ## 🛠️ Troubleshooting
 
-**Rules conflicting with your existing setup?** You can override specific rules by adding them after our config:
+**Rules conflicting with your existing setup?** You can override specific rules by adding a config after ours:
 
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import {buildConfig} from '@ver0/eslint-config';
+import javascript from '@ver0/eslint-config/javascript';
+import node from '@ver0/eslint-config/node';
+import prettier from '@ver0/eslint-config/prettier';
 
-export default defineConfig(...buildConfig({globals: 'node'}), {
+export default defineConfig(javascript, node, prettier, {
 	rules: {
 		'some-rule': 'off', // Override any rule
 	},
