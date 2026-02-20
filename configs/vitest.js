@@ -1,15 +1,15 @@
-import vitestPlugin from '@vitest/eslint-plugin';
-import {GLOBS} from './constants.js';
+import {checkDependencies} from '../utils/check-dependencies.js';
+import {GLOBS} from '../utils/globs.js';
 
-/**
- * @description Create a new vitest config.
- *
- * @returns {import("eslint").Linter.Config}
- */
-export function newVitestConfig() {
-	return {
-		name: 'vitest config',
-		files: [GLOBS.TEST],
-		extends: [vitestPlugin.configs.recommended],
-	};
-}
+await checkDependencies('@vitest/eslint-plugin');
+
+const {default: vitestPlugin} = await import('@vitest/eslint-plugin');
+
+/** @type {import("eslint").Linter.Config} */
+const vitest = {
+	name: 'vitest config',
+	files: [GLOBS.TEST],
+	extends: [vitestPlugin.configs.recommended],
+};
+
+export default vitest;

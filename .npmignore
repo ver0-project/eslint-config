@@ -1,5 +1,8 @@
 *
 !configs/
-!index.js
+!configs/**
+!utils/
+!utils/**
+*.test.js
 !.prettierrc.js
 !.editorconfig

@@ -1,41 +1,18 @@
-import prettierPlugin from 'eslint-plugin-prettier/recommended';
-import {GLOBS} from './constants.js';
+import {checkDependencies} from '../utils/check-dependencies.js';
+import {GLOBS} from '../utils/globs.js';
 
-/**
- * @typedef {Object} PrettierConfigOptions
- * @property {boolean} [typescript] - Whether to use the TypeScript plugin.
- * @property {boolean} [json] - Whether to use the JSON config.
- * @property {boolean} [markdown] - Whether to use the Markdown config.
- */
+await checkDependencies('eslint-plugin-prettier');
 
-/**
- * @description Create a new prettier config, with the given options.
- *
- * @param options {PrettierConfigOptions}
- * @returns {import("eslint").Linter.Config}
- */
-export function newPrettierConfig(options) {
-	/** @type {string[]} */
-	const files = [GLOBS.JS];
+const {default: prettierPlugin} = await import('eslint-plugin-prettier/recommended');
 
-	if (options.markdown) {
-		files.push(GLOBS.MD);
-	}
+/** @type {import("eslint").Linter.Config} */
+const prettier = {
+	name: 'prettier config',
+	files: [GLOBS.JS, GLOBS.TS, GLOBS.JSON, GLOBS.JSONC, GLOBS.JSON5, GLOBS.MD],
+	extends: [prettierPlugin],
+	rules: {
+		'prettier/prettier': 'error',
+	},
+};
 
-	if (options.json) {
-		files.push(GLOBS.JSON, GLOBS.JSONC, GLOBS.JSON5);
-	}
-
-	if (options.typescript) {
-		files.push(GLOBS.TS);
-	}
-
-	return {
-		name: 'prettier config',
-		files,
-		extends: [prettierPlugin],
-		rules: {
-			'prettier/prettier': 'error',
-		},
-	};
-}
+export default prettier;

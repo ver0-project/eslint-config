@@ -1,15 +1,15 @@
-import markdownPlugin from '@eslint/markdown';
-import {GLOBS} from './constants.js';
+import {checkDependencies} from '../utils/check-dependencies.js';
+import {GLOBS} from '../utils/globs.js';
 
-/**
- * @description Create a new markdown config.
- *
- * @returns {import("eslint").Linter.Config}
- */
-export function newMarkdownConfig() {
-	return {
-		name: 'Markdown config',
-		files: [GLOBS.MD],
-		extends: [markdownPlugin.configs.recommended],
-	};
-}
+await checkDependencies('@eslint/markdown');
+
+const {default: markdownPlugin} = await import('@eslint/markdown');
+
+/** @type {import("eslint").Linter.Config} */
+const markdown = {
+	name: 'Markdown config',
+	files: [GLOBS.MD],
+	extends: [markdownPlugin.configs.recommended],
+};
+
+export default markdown;

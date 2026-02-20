@@ -1,13 +1,16 @@
 import {defineConfig} from 'eslint/config';
-import {buildConfig} from './index.js';
+import javascript from './configs/javascript.js';
+import node from './configs/node.js';
+import json from './configs/json.js';
+import markdown from './configs/markdown.js';
+import prettier from './configs/prettier.js';
 
 export default defineConfig(
-	...buildConfig({
-		globals: 'node',
-		json: true,
-		markdown: true,
-		typescript: false,
-	}),
+	javascript,
+	node,
+	...json,
+	markdown,
+	prettier,
 	{
 		files: ['README.md'],
 		language: 'markdown/gfm',

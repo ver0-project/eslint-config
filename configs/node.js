@@ -1,31 +1,38 @@
-import nodePlugin from 'eslint-plugin-n';
-import {GLOBS} from './constants.js';
+import {checkDependencies} from '../utils/check-dependencies.js';
+import {GLOBS} from '../utils/globs.js';
 
-/**
- * @description Create a new node config.
- *
- * @returns {import("eslint").Linter.Config}
- */
-export function newNodeConfig() {
-	return {
-		name: 'node config',
-		files: [GLOBS.JS, GLOBS.TS],
-		extends: [nodePlugin.configs['flat/recommended-module']],
-		rules: {
-			'n/file-extension-in-import': ['error', 'always'],
-			'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
-			'n/no-new-require': 'error',
-			'n/no-path-concat': 'error',
-			'n/no-deprecated-api': 'error',
-			'n/process-exit-as-throw': 'error',
-			'n/prefer-global/console': ['error', 'always'],
-			'n/prefer-global/process': ['error', 'never'],
-			'n/prefer-global/text-decoder': ['error', 'always'],
-			'n/prefer-global/text-encoder': ['error', 'always'],
-			'n/prefer-global/url-search-params': ['error', 'always'],
-			'n/prefer-global/url': ['error', 'always'],
-			'n/prefer-promises/dns': 'error',
-			'n/prefer-promises/fs': 'error',
+await checkDependencies('globals', 'eslint-plugin-n');
+
+const {default: globals} = await import('globals');
+const {default: nodePlugin} = await import('eslint-plugin-n');
+
+/** @type {import("eslint").Linter.Config} */
+const node = {
+	name: 'node config',
+	files: [GLOBS.JS, GLOBS.TS],
+	extends: [nodePlugin.configs['flat/recommended-module']],
+	languageOptions: {
+		globals: {
+			...globals.es2026,
+			...globals.node,
 		},
-	};
-}
+	},
+	rules: {
+		'n/file-extension-in-import': ['error', 'always'],
+		'n/no-mixed-requires': ['error', {grouping: true, allowCall: true}],
+		'n/no-new-require': 'error',
+		'n/no-path-concat': 'error',
+		'n/no-deprecated-api': 'error',
+		'n/process-exit-as-throw': 'error',
+		'n/prefer-global/console': ['error', 'always'],
+		'n/prefer-global/process': ['error', 'never'],
+		'n/prefer-global/text-decoder': ['error', 'always'],
+		'n/prefer-global/text-encoder': ['error', 'always'],
+		'n/prefer-global/url-search-params': ['error', 'always'],
+		'n/prefer-global/url': ['error', 'always'],
+		'n/prefer-promises/dns': 'error',
+		'n/prefer-promises/fs': 'error',
+	},
+};
+
+export default node;
