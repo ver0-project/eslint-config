@@ -5,5 +5,7 @@ export const GLOBS = {
 	JSONC: '**/*.jsonc',
 	JSON5: '**/*.json5',
 	MD: '**/*.md',
+	SVELTE: '**/*.svelte',
+	SVELTE_MODULES: '**/*.svelte.{js,ts}',
 	TEST: '**/*.{test,benchmark}.*',
 };

@@ -140,6 +140,19 @@ describe('vitest', () => {
 	});
 });
 
+describe('svelte', () => {
+	it('exports a valid config with svelte files', async () => {
+		const {default: config} = await import('./svelte.js');
+		expect(config.name).toBe('svelte config');
+		expect(config.files).toContain('**/*.svelte');
+		expect(config.extends).toBeDefined();
+	});
+
+	// Linter.verify() cannot be used here because svelte-eslint-parser's scope
+	// manager doesn't implement ESLint 10's addGlobals() API. The structural
+	// test above proves the config loads and resolves correctly.
+});
+
 describe('prettier', () => {
 	it('exports a valid config with prettier rule', async () => {
 		const {default: config} = await import('./prettier.js');
