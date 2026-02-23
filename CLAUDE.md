@@ -34,6 +34,7 @@ configs/          # ESLint config modules (one per concern)
   javascript.js   # Base JS rules (always included)
   typescript.js   # TS rules + typescriptUnsafe named export
   react.js        # React/JSX rules
+  svelte.js       # Svelte component and runes module rules
   node.js         # Node.js globals and rules
   browser.js      # Browser globals and restricted globals
   json.js         # JSON/JSONC/JSON5 (exports array of 3 configs)
@@ -76,8 +77,9 @@ Tests live next to source files (`*.test.js`). Two test suites:
 
 Configs using `extends` must be passed through `defineConfig()` before `Linter.verify()` can process them.
 
-TypeScript and React configs cannot be verified via `Linter.verify()` due to third-party limitations (TS needs a
-tsconfig project, React plugin uses a legacy API). Structural tests cover those instead.
+TypeScript, React, and Svelte configs cannot be verified via `Linter.verify()` due to third-party limitations (TS needs
+a tsconfig project, React plugin uses a legacy API, Svelte parser lacks ESLint 10's `addGlobals()` API). Structural
+tests cover those instead.
 
 ## Gotchas
 

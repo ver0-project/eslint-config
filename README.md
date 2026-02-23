@@ -19,6 +19,7 @@ A collection of modular ESLint configs — import only what you need and compose
 - **JavaScript** — base rules, import sorting, unicorn, promise, ESLint comments
 - **TypeScript** — type-aware linting via XO TypeScript config
 - **React** — JSX, hooks, and import rules
+- **Svelte** — Svelte component and runes module linting
 - **Node.js** — Node globals and `eslint-plugin-n` rules
 - **Browser** — browser globals and restricted globals
 - **JSON** — `.json`, `.jsonc`, `.json5` linting
@@ -74,6 +75,13 @@ peer dependencies are not installed, you'll get a clear error listing exactly wh
 
   ```bash
   yarn add -D eslint-plugin-import eslint-config-xo-react
+  ```
+
+- **Svelte** — Svelte component (`.svelte`) and runes module (`.svelte.js`, `.svelte.ts`) linting via
+  `eslint-plugin-svelte` recommended rules.
+
+  ```bash
+  yarn add -D eslint-plugin-svelte
   ```
 
 - **Node.js** — Node.js globals and `eslint-plugin-n` rules.
@@ -146,6 +154,22 @@ import vitest from '@ver0/eslint-config/vitest';
 import prettier from '@ver0/eslint-config/prettier';
 
 export default defineConfig(javascript, typescript, react, browser, ...json, vitest, prettier);
+```
+
+**SvelteKit application:**
+
+```js
+// eslint.config.js
+import {defineConfig} from 'eslint/config';
+import javascript from '@ver0/eslint-config/javascript';
+import typescript from '@ver0/eslint-config/typescript';
+import svelte from '@ver0/eslint-config/svelte';
+import node from '@ver0/eslint-config/node';
+import json from '@ver0/eslint-config/json';
+import vitest from '@ver0/eslint-config/vitest';
+import prettier from '@ver0/eslint-config/prettier';
+
+export default defineConfig(javascript, typescript, svelte, node, ...json, vitest, prettier);
 ```
 
 ### 🎨 Prettier Configuration
