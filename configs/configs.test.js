@@ -141,11 +141,18 @@ describe('vitest', () => {
 });
 
 describe('svelte', () => {
-	it('exports a valid config with svelte files', async () => {
-		const {default: config} = await import('./svelte.js');
-		expect(config.name).toBe('svelte config');
-		expect(config.files).toContain('**/*.svelte');
-		expect(config.extends).toBeDefined();
+	it('exports an array of configs with parser and rules', async () => {
+		const {default: configs} = await import('./svelte.js');
+		expect(configs).toHaveLength(4);
+
+		const names = configs.map((c) => c.name);
+		expect(names).toContain('svelte:base:setup-plugin');
+		expect(names).toContain('svelte:base:setup-for-svelte');
+		expect(names).toContain('svelte:recommended:rules');
+
+		const svelteFileConfig = configs.find((c) => c.name === 'svelte:base:setup-for-svelte');
+		expect(svelteFileConfig.files).toContain('**/*.svelte');
+		expect(svelteFileConfig.languageOptions.parser).toBeDefined();
 	});
 
 	// Linter.verify() cannot be used here because svelte-eslint-parser's scope

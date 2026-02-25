@@ -19,11 +19,11 @@ A collection of modular ESLint configs — import only what you need and compose
 - **JavaScript** — base rules, import sorting, unicorn, promise, ESLint comments
 - **TypeScript** — type-aware linting via XO TypeScript config
 - **React** — JSX, hooks, and import rules
-- **Svelte** — Svelte component and runes module linting
 - **Node.js** — Node globals and `eslint-plugin-n` rules
 - **Browser** — browser globals and restricted globals
 - **JSON** — `.json`, `.jsonc`, `.json5` linting
 - **Markdown** — Markdown linting
+- **Svelte** — Svelte component and runes module linting
 - **Vitest** — test file rules
 - **Prettier** — formatting integration
 
@@ -77,13 +77,6 @@ peer dependencies are not installed, you'll get a clear error listing exactly wh
   yarn add -D eslint-plugin-import eslint-config-xo-react
   ```
 
-- **Svelte** — Svelte component (`.svelte`) and runes module (`.svelte.js`, `.svelte.ts`) linting via
-  `eslint-plugin-svelte` recommended rules.
-
-  ```bash
-  yarn add -D eslint-plugin-svelte
-  ```
-
 - **Node.js** — Node.js globals and `eslint-plugin-n` rules.
 
   ```bash
@@ -108,6 +101,13 @@ peer dependencies are not installed, you'll get a clear error listing exactly wh
 
   ```bash
   yarn add -D @eslint/markdown
+  ```
+
+- **Svelte** — Svelte component and runes module linting via `eslint-plugin-svelte`. Exports an array of configs —
+  spread it with `...svelte` in `defineConfig()`.
+
+  ```bash
+  yarn add -D eslint-plugin-svelte
   ```
 
 - **Vitest** — rules for test and benchmark files (`*.test.*`, `*.benchmark.*`).
@@ -164,12 +164,12 @@ import {defineConfig} from 'eslint/config';
 import javascript from '@ver0/eslint-config/javascript';
 import typescript from '@ver0/eslint-config/typescript';
 import svelte from '@ver0/eslint-config/svelte';
-import node from '@ver0/eslint-config/node';
+import browser from '@ver0/eslint-config/browser';
 import json from '@ver0/eslint-config/json';
 import vitest from '@ver0/eslint-config/vitest';
 import prettier from '@ver0/eslint-config/prettier';
 
-export default defineConfig(javascript, typescript, svelte, node, ...json, vitest, prettier);
+export default defineConfig(javascript, typescript, ...svelte, browser, ...json, vitest, prettier);
 ```
 
 ### 🎨 Prettier Configuration

@@ -34,7 +34,7 @@ configs/          # ESLint config modules (one per concern)
   javascript.js   # Base JS rules (always included)
   typescript.js   # TS rules + typescriptUnsafe named export
   react.js        # React/JSX rules
-  svelte.js       # Svelte component and runes module rules
+  svelte.js       # Svelte component and runes module rules (exports array)
   node.js         # Node.js globals and rules
   browser.js      # Browser globals and restricted globals
   json.js         # JSON/JSONC/JSON5 (exports array of 3 configs)
@@ -61,7 +61,8 @@ Each config module exports a pre-built `Linter.Config` object (or array for JSON
 ## Key Conventions
 
 - Config modules export pre-built config objects as default exports, not factory functions
-- `json.js` is the exception — exports an array of 3 configs (JSON, JSONC, JSON5)
+- `json.js` exports an array of 3 configs (JSON, JSONC, JSON5); `svelte.js` exports the plugin's recommended array (4
+  configs)
 - `typescript.js` has an additional named export `typescriptUnsafe` that disables strict type-safety rules
 - `checkDependencies(...packages)` takes variadic string args (no config name — stack trace identifies the caller)
 - Base rule sets come from XO configs (`eslint-config-xo`, `eslint-config-xo-typescript`, `eslint-config-xo-react`) with
