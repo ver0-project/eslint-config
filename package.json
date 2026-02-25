@@ -24,6 +24,8 @@
 	"author": "Anton Zinovyev <xog3@yandex.ru>",
 	"type": "module",
 	"exports": {
+		"./.prettierrc.js": "./.prettierrc.js",
+		"./.editorconfig": "./.editorconfig",
 		"./*": "./configs/*.js"
 	},
 	"scripts": {
