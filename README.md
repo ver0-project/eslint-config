@@ -42,11 +42,11 @@ Import the configs you need and compose them with `defineConfig()`:
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import javascript from '@ver0/eslint-config/javascript';
-import node from '@ver0/eslint-config/node';
-import json from '@ver0/eslint-config/json';
-import markdown from '@ver0/eslint-config/markdown';
-import prettier from '@ver0/eslint-config/prettier';
+import javascript from '@ver0/eslint-config/javascript.js';
+import node from '@ver0/eslint-config/node.js';
+import json from '@ver0/eslint-config/json.js';
+import markdown from '@ver0/eslint-config/markdown.js';
+import prettier from '@ver0/eslint-config/prettier.js';
 
 export default defineConfig(javascript, node, ...json, markdown, prettier);
 ```
@@ -129,13 +129,13 @@ peer dependencies are not installed, you'll get a clear error listing exactly wh
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import javascript from '@ver0/eslint-config/javascript';
-import typescript from '@ver0/eslint-config/typescript';
-import node from '@ver0/eslint-config/node';
-import json from '@ver0/eslint-config/json';
-import markdown from '@ver0/eslint-config/markdown';
-import vitest from '@ver0/eslint-config/vitest';
-import prettier from '@ver0/eslint-config/prettier';
+import javascript from '@ver0/eslint-config/javascript.js';
+import typescript from '@ver0/eslint-config/typescript.js';
+import node from '@ver0/eslint-config/node.js';
+import json from '@ver0/eslint-config/json.js';
+import markdown from '@ver0/eslint-config/markdown.js';
+import vitest from '@ver0/eslint-config/vitest.js';
+import prettier from '@ver0/eslint-config/prettier.js';
 
 export default defineConfig(javascript, typescript, node, ...json, markdown, vitest, prettier);
 ```
@@ -145,13 +145,13 @@ export default defineConfig(javascript, typescript, node, ...json, markdown, vit
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import javascript from '@ver0/eslint-config/javascript';
-import typescript from '@ver0/eslint-config/typescript';
-import react from '@ver0/eslint-config/react';
-import browser from '@ver0/eslint-config/browser';
-import json from '@ver0/eslint-config/json';
-import vitest from '@ver0/eslint-config/vitest';
-import prettier from '@ver0/eslint-config/prettier';
+import javascript from '@ver0/eslint-config/javascript.js';
+import typescript from '@ver0/eslint-config/typescript.js';
+import react from '@ver0/eslint-config/react.js';
+import browser from '@ver0/eslint-config/browser.js';
+import json from '@ver0/eslint-config/json.js';
+import vitest from '@ver0/eslint-config/vitest.js';
+import prettier from '@ver0/eslint-config/prettier.js';
 
 export default defineConfig(javascript, typescript, react, browser, ...json, vitest, prettier);
 ```
@@ -161,13 +161,13 @@ export default defineConfig(javascript, typescript, react, browser, ...json, vit
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import javascript from '@ver0/eslint-config/javascript';
-import typescript from '@ver0/eslint-config/typescript';
-import svelte from '@ver0/eslint-config/svelte';
-import browser from '@ver0/eslint-config/browser';
-import json from '@ver0/eslint-config/json';
-import vitest from '@ver0/eslint-config/vitest';
-import prettier from '@ver0/eslint-config/prettier';
+import javascript from '@ver0/eslint-config/javascript.js';
+import typescript from '@ver0/eslint-config/typescript.js';
+import svelte from '@ver0/eslint-config/svelte.js';
+import browser from '@ver0/eslint-config/browser.js';
+import json from '@ver0/eslint-config/json.js';
+import vitest from '@ver0/eslint-config/vitest.js';
+import prettier from '@ver0/eslint-config/prettier.js';
 
 export default defineConfig(javascript, typescript, ...svelte, browser, ...json, vitest, prettier);
 ```
@@ -215,9 +215,9 @@ indent_size = 2
 ```js
 // eslint.config.js
 import {defineConfig} from 'eslint/config';
-import javascript from '@ver0/eslint-config/javascript';
-import node from '@ver0/eslint-config/node';
-import prettier from '@ver0/eslint-config/prettier';
+import javascript from '@ver0/eslint-config/javascript.js';
+import node from '@ver0/eslint-config/node.js';
+import prettier from '@ver0/eslint-config/prettier.js';
 
 export default defineConfig(javascript, node, prettier, {
 	rules: {

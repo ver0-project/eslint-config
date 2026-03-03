@@ -20,11 +20,11 @@ No build step. The package ships plain JS.
 `@ver0/eslint-config` is a shared ESLint flat config package (ESLint 10+) used across all ver0 projects. Each config
 module is imported individually by consumers — there is no central `buildConfig()` entry point.
 
-**Exports map:** `"./*": "./configs/*.js"` — consumers import configs directly:
+**Exports map:** `"./*": "./configs/*"` — consumers import configs directly:
 
 ```js
-import javascript from '@ver0/eslint-config/javascript';
-import typescript from '@ver0/eslint-config/typescript';
+import javascript from '@ver0/eslint-config/javascript.js';
+import typescript from '@ver0/eslint-config/typescript.js';
 ```
 
 ## Architecture
