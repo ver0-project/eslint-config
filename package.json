@@ -35,7 +35,7 @@
 	},
 	"packageManager": "yarn@4.12.0",
 	"peerDependencies": {
-		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.0",
+		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
 		"@eslint/js": "^10.0.1",
 		"@eslint/json": "^1.0.1",
 		"@eslint/markdown": "^7.5.1",
@@ -128,7 +128,7 @@
 		}
 	},
 	"devDependencies": {
-		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.0",
+		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
 		"@eslint/js": "^10.0.1",
 		"@eslint/json": "^1.0.1",
 		"@eslint/markdown": "^7.5.1",
