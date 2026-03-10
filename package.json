@@ -37,7 +37,7 @@
 	"peerDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
 		"@eslint/js": "^10.0.1",
-		"@eslint/json": "^1.0.1",
+		"@eslint/json": "^1.1.0",
 		"@eslint/markdown": "^7.5.1",
 		"@vitest/eslint-plugin": "^1.6.9",
 		"confusing-browser-globals": "^1.0.11",
@@ -130,7 +130,7 @@
 	"devDependencies": {
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
 		"@eslint/js": "^10.0.1",
-		"@eslint/json": "^1.0.1",
+		"@eslint/json": "^1.1.0",
 		"@eslint/markdown": "^7.5.1",
 		"@ver0/eslint-formatter-gha": "^1.0.1",
 		"@vitest/eslint-plugin": "^1.6.9",
