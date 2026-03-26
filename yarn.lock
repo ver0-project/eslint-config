@@ -1656,7 +1656,7 @@ __metadata:
     eslint-config-prettier: "npm:^10.1.8"
     eslint-config-xo: "npm:^0.50.0"
     eslint-config-xo-react: "npm:^0.30.0"
-    eslint-config-xo-typescript: "npm:^10.0.0"
+    eslint-config-xo-typescript: "npm:^11.0.0"
     eslint-plugin-import: "npm:^2.32.0"
     eslint-plugin-n: "npm:^17.24.0"
     eslint-plugin-no-use-extend-native: "npm:^0.7.2"
@@ -1681,7 +1681,7 @@ __metadata:
     eslint-config-prettier: ^10.1.8
     eslint-config-xo: ^0.50.0
     eslint-config-xo-react: ^0.30.0
-    eslint-config-xo-typescript: ^10.0.0
+    eslint-config-xo-typescript: ^11.0.0
     eslint-plugin-import: ^2.32.0
     eslint-plugin-n: ^17.24.0
     eslint-plugin-no-use-extend-native: ^0.7.2
@@ -3150,9 +3150,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-xo-typescript@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "eslint-config-xo-typescript@npm:10.0.0"
+"eslint-config-xo-typescript@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "eslint-config-xo-typescript@npm:11.0.0"
   dependencies:
     "@stylistic/eslint-plugin": "npm:^5.10.0"
     eslint-config-xo: "npm:^0.50.0"
@@ -3160,7 +3160,7 @@ __metadata:
   peerDependencies:
     eslint: ">=10"
     typescript: ">=5.9.0"
-  checksum: 10c0/bb57a65db05da4ce41cc7630c17b5c2ebe3e577566cfc750be7e5afb13f983358bfdfc31898b4c3ecec39704f26a9a4b1103fe409fd79c34cce3f1943ae8b631
+  checksum: 10c0/9cf2847f306997491214e8b48e3ba7080cfe92e42f5fff8b9d8014d62c30d903b9f7d6bc1cddb93452595ed68e2d41c0adcf0737726fbcd9881c77e8a9589191
   languageName: node
   linkType: hard
 
