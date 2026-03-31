@@ -421,9 +421,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/markdown@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "@eslint/markdown@npm:8.0.0"
+"@eslint/markdown@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@eslint/markdown@npm:8.0.1"
   dependencies:
     "@eslint/core": "npm:^1.1.1"
     "@eslint/plugin-kit": "npm:^0.6.1"
@@ -436,7 +436,7 @@ __metadata:
     micromark-extension-gfm: "npm:^3.0.0"
     micromark-extension-math: "npm:^3.1.0"
     micromark-util-normalize-identifier: "npm:^2.0.1"
-  checksum: 10c0/a174544bc95fa3b70b5e36e8bcebc68e4c27beb7d02774f5192ea839dff5111b8b2cce0d06a69619b608288bedce826871913b631922fb030ab6f929dcdcfe04
+  checksum: 10c0/4ed1b17f944d5095225c38fd61a9662ea394b4722378026c52effab3f2549cbee213d488bafb031941bfb60b6de5ebff2c830ff89720d94f58d415aefccbe667
   languageName: node
   linkType: hard
 
@@ -1673,7 +1673,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.7.1"
     "@eslint/js": "npm:^10.0.1"
     "@eslint/json": "npm:^1.2.0"
-    "@eslint/markdown": "npm:^8.0.0"
+    "@eslint/markdown": "npm:^8.0.1"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
     "@vitest/eslint-plugin": "npm:^1.6.13"
     confusing-browser-globals: "npm:^1.0.11"
@@ -1699,7 +1699,7 @@ __metadata:
     "@eslint-community/eslint-plugin-eslint-comments": ^4.7.1
     "@eslint/js": ^10.0.1
     "@eslint/json": ^1.2.0
-    "@eslint/markdown": ^8.0.0
+    "@eslint/markdown": ^8.0.1
     "@vitest/eslint-plugin": ^1.6.13
     confusing-browser-globals: ^1.0.11
     eslint: ^10.1.0
