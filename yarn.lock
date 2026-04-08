@@ -1718,7 +1718,7 @@ __metadata:
     globals: "npm:^17.4.0"
     prettier: "npm:^3.8.1"
     semantic-release: "npm:^25.0.3"
-    svelte: "npm:^5.55.1"
+    svelte: "npm:^5.55.2"
     typescript: "npm:^6.0.2"
     vitest: "npm:^4.1.2"
   peerDependencies:
@@ -8163,9 +8163,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^5.55.1":
-  version: 5.55.1
-  resolution: "svelte@npm:5.55.1"
+"svelte@npm:^5.55.2":
+  version: 5.55.2
+  resolution: "svelte@npm:5.55.2"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.4"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -8183,7 +8183,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/4a915072cc6f0388b55f6e51533dbc6bb78aec796e2bf5a571775b454236260042ca9a556d77d2eeb8d471561ab1e64f25e66f0e587d51b12b2d4a65f82c6ae6
+  checksum: 10c0/4156392c743144dffa396c9b608dc41a8876767ce93aeec5d9c300cf04cb47e6aec02e2b15f71acfed0f935c097b12b4dbd479ab081d7dbdd28b015c53d480f4
   languageName: node
   linkType: hard
 
