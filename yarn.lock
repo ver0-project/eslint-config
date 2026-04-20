@@ -1706,7 +1706,7 @@ __metadata:
     eslint: "npm:^10.2.1"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-config-xo: "npm:^0.50.0"
-    eslint-config-xo-react: "npm:^0.30.0"
+    eslint-config-xo-react: "npm:^0.30.1"
     eslint-config-xo-typescript: "npm:^11.0.0"
     eslint-plugin-import: "npm:^2.32.0"
     eslint-plugin-n: "npm:^17.24.0"
@@ -1731,7 +1731,7 @@ __metadata:
     eslint: ^10.2.1
     eslint-config-prettier: ^10.1.8
     eslint-config-xo: ^0.50.0
-    eslint-config-xo-react: ^0.30.0
+    eslint-config-xo-react: ^0.30.1
     eslint-config-xo-typescript: ^11.0.0
     eslint-plugin-import: ^2.32.0
     eslint-plugin-n: ^17.24.0
@@ -3196,15 +3196,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-xo-react@npm:^0.30.0":
-  version: 0.30.0
-  resolution: "eslint-config-xo-react@npm:0.30.0"
+"eslint-config-xo-react@npm:^0.30.1":
+  version: 0.30.1
+  resolution: "eslint-config-xo-react@npm:0.30.1"
   dependencies:
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^7.0.1"
   peerDependencies:
     eslint: ">=9.18.0"
-  checksum: 10c0/6c0663175d3fbb0e24930539880e34984f131a15dc911da55f8b9c85297cd6599fa9b53ee09971a1e61cb34a6007eb6b2397b510673dbd819f1b4270dad14141
+  checksum: 10c0/e16f98aa3f5d4784ab759839278b50d36d3d538ef0dd50125420027ca27a5074ba1064a5efc2b61620a3cd9830a997724bfcee8b18f55eed8d8caa039cfa4e9d
   languageName: node
   linkType: hard
 
