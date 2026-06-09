@@ -1698,7 +1698,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.5.6"
     eslint-plugin-promise: "npm:^7.3.0"
     eslint-plugin-svelte: "npm:^3.19.0"
-    eslint-plugin-unicorn: "npm:^65.0.0"
+    eslint-plugin-unicorn: "npm:^65.0.1"
     globals: "npm:^17.6.0"
     prettier: "npm:^3.8.3"
     semantic-release: "npm:^25.0.3"
@@ -1724,7 +1724,7 @@ __metadata:
     eslint-plugin-promise: ^7.3.0
     eslint-plugin-react: ^7.37.5
     eslint-plugin-svelte: ^3.19.0
-    eslint-plugin-unicorn: ^65.0.0
+    eslint-plugin-unicorn: ^65.0.1
     globals: ^17.6.0
     prettier: ^3.8.3
     typescript: ^6.0.3
@@ -3421,9 +3421,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-unicorn@npm:^65.0.0":
-  version: 65.0.0
-  resolution: "eslint-plugin-unicorn@npm:65.0.0"
+"eslint-plugin-unicorn@npm:^65.0.1":
+  version: 65.0.1
+  resolution: "eslint-plugin-unicorn@npm:65.0.1"
   dependencies:
     "@babel/helper-validator-identifier": "npm:^7.28.5"
     "@eslint-community/eslint-utils": "npm:^4.9.1"
@@ -3442,7 +3442,7 @@ __metadata:
     strip-indent: "npm:^4.1.1"
   peerDependencies:
     eslint: ">=9.38.0"
-  checksum: 10c0/e09f6a2aea98ec58430e5a4ea19213e8a38a19525eef2fd2f80fcfb488b35c7839a19fbe38d21d6e8d5414c6814e9f9b46c3624ccdd4c146d0b1a2cb9aa7cdbe
+  checksum: 10c0/17b640a7151911676141ec796cc44616961a80ebd9414f3d2f7666b6877f6e76babf239aa95cc088f126895f795ee91ccc8fe3e14b1bac7a8b33f022686e1a97
   languageName: node
   linkType: hard
 
