@@ -1697,7 +1697,7 @@ __metadata:
     eslint-plugin-no-use-extend-native: "npm:^0.7.3"
     eslint-plugin-prettier: "npm:^5.5.6"
     eslint-plugin-promise: "npm:^7.3.0"
-    eslint-plugin-svelte: "npm:^3.19.0"
+    eslint-plugin-svelte: "npm:^3.20.0"
     eslint-plugin-unicorn: "npm:^65.0.1"
     globals: "npm:^17.7.0"
     prettier: "npm:^3.8.4"
@@ -1723,7 +1723,7 @@ __metadata:
     eslint-plugin-prettier: ^5.5.6
     eslint-plugin-promise: ^7.3.0
     eslint-plugin-react: ^7.37.5
-    eslint-plugin-svelte: ^3.19.0
+    eslint-plugin-svelte: ^3.20.0
     eslint-plugin-unicorn: ^65.0.1
     globals: ^17.7.0
     prettier: ^3.8.4
@@ -3397,9 +3397,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-svelte@npm:^3.19.0":
-  version: 3.19.0
-  resolution: "eslint-plugin-svelte@npm:3.19.0"
+"eslint-plugin-svelte@npm:^3.20.0":
+  version: 3.20.0
+  resolution: "eslint-plugin-svelte@npm:3.20.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.6.1"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -3417,7 +3417,7 @@ __metadata:
   peerDependenciesMeta:
     svelte:
       optional: true
-  checksum: 10c0/573723dd97ecf65435df8ee12e57db34890097e0aa0f039bf436ae1ae496daa43455af5606db080424f557cf75fd7cffabbc61ffb3d12b04b1a60d7525462e91
+  checksum: 10c0/f3eb86bbdceb4b37108b5906e4d0f2db70029022ed99ebe713c45ca987ea0986e9bbdee2da609ae6ba26f46eb86e3d866f00341c08b9ca19cb153f43b0ca6d9d
   languageName: node
   linkType: hard
 
