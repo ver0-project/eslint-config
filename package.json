@@ -150,7 +150,7 @@
 		"globals": "^17.7.0",
 		"prettier": "^3.9.5",
 		"semantic-release": "^25.0.7",
-		"svelte": "^5.56.4",
+		"svelte": "^5.56.5",
 		"typescript": "^6.0.3",
 		"vitest": "^4.1.10"
 	}
