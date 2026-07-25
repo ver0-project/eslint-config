@@ -4,7 +4,9 @@ import {GLOBS} from '../utils/globs.js';
 await checkDependencies('eslint-plugin-import', 'eslint-config-xo-react');
 
 const {default: importPlugin} = await import('eslint-plugin-import');
-const {default: xoReactConfig} = await import('eslint-config-xo-react');
+const {default: xoReactConfigFactory} = await import('eslint-config-xo-react');
+
+const xoReactConfig = await xoReactConfigFactory();
 
 /** @type {import("eslint").Linter.Config} */
 const react = {

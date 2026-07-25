@@ -56,6 +56,16 @@ describe('react', () => {
 		expect(config.rules['react/react-in-jsx-scope']).toBe('off');
 	});
 
+	it('resolves xo-react rules through extends', async () => {
+		const {default: config} = await import('./react.js');
+		const resolved = defineConfig(config);
+		const rules = Object.assign({}, ...resolved.map((c) => c.rules ?? {}));
+		// Passing the xo-react factory uncalled into extends silently yields
+		// an empty config — assert its rules actually land.
+		expect(rules['react-hooks/rules-of-hooks']).toBeDefined();
+		expect(rules['react/jsx-key']).toBeDefined();
+	});
+
 	// Linter.verify() cannot be used here because eslint-plugin-react bundled
 	// with xo-react uses a legacy getFilename() API removed in ESLint 10's Linter.
 	// The structural test above proves the config loads and resolves correctly.
