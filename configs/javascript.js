@@ -17,6 +17,9 @@ const {default: importPlugin} = await import('eslint-plugin-import');
 const {default: promisePlugin} = await import('eslint-plugin-promise');
 const {default: unicornPlugin} = await import('eslint-plugin-unicorn');
 const {default: eslintPluginNoUseExtendNative} = await import('eslint-plugin-no-use-extend-native');
+// XO must stay on the 0.50 line — later versions export an all-in-one
+// factory that redefines plugins composed here (unicorn, eslint-comments,
+// no-use-extend-native, ...).
 const {default: xoConfig} = await import('eslint-config-xo');
 
 /** @type {import("eslint").Linter.Config} */
@@ -30,7 +33,7 @@ const javascript = {
 		promisePlugin.configs['flat/recommended'],
 		unicornPlugin.configs.recommended,
 		eslintPluginNoUseExtendNative.configs.recommended,
-		xoConfig[0], // Kinda hardcode but we only need xo's JS rules
+		xoConfig[0], // Only xo's base JS rules are wanted
 	],
 	languageOptions: {
 		sourceType: 'module',
@@ -42,6 +45,11 @@ const javascript = {
 		// It is a good rule in general, but dialects are project-dependant
 		// in case some project had to restrict vocabulary, it should be done there.
 		'unicorn/prevent-abbreviations': 'off',
+		'unicorn/name-replacements': 'off',
+
+		// Top-level initialization (incl. top-level await) is a legitimate
+		// pattern for config and CLI modules.
+		'unicorn/no-top-level-side-effects': 'off',
 
 		// Nulls are fine!
 		'unicorn/no-null': 'off',
