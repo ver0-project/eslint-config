@@ -26,6 +26,13 @@ updates:
     commit-message:
       prefix: "fix(deps)"
       prefix-development: "chore(deps)"
+    ignore:
+      # xo >=0.58 exports an all-in-one factory incompatible with this package's composition
+      - dependency-name: "eslint-config-xo"
+        versions: [">=0.51.0"]
+      # typescript-eslint rejects the TS 7.0 API; revisit once >=7.1 is supported
+      - dependency-name: "typescript"
+        versions: [">=7.0.0"]
     groups:
       dev-dependencies:
         dependency-type: development
