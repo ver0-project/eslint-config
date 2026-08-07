@@ -1692,7 +1692,7 @@ __metadata:
     "@eslint/json": "npm:^2.0.1"
     "@eslint/markdown": "npm:^8.0.3"
     "@ver0/eslint-formatter-gha": "npm:^1.0.1"
-    "@vitest/eslint-plugin": "npm:^1.6.25"
+    "@vitest/eslint-plugin": "npm:^1.6.26"
     confusing-browser-globals: "npm:^1.0.11"
     conventional-changelog-conventionalcommits: "npm:^10.2.1"
     eslint: "npm:^10.8.0"
@@ -1718,7 +1718,7 @@ __metadata:
     "@eslint/js": ^10.0.1
     "@eslint/json": ^2.0.1
     "@eslint/markdown": ^8.0.3
-    "@vitest/eslint-plugin": ^1.6.25
+    "@vitest/eslint-plugin": ^1.6.26
     confusing-browser-globals: ^1.0.11
     eslint: ^10.8.0
     eslint-config-prettier: ^10.1.8
@@ -1794,9 +1794,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/eslint-plugin@npm:^1.6.25":
-  version: 1.6.25
-  resolution: "@vitest/eslint-plugin@npm:1.6.25"
+"@vitest/eslint-plugin@npm:^1.6.26":
+  version: 1.6.26
+  resolution: "@vitest/eslint-plugin@npm:1.6.26"
   dependencies:
     "@typescript-eslint/scope-manager": "npm:^8.58.0"
     "@typescript-eslint/utils": "npm:^8.58.0"
@@ -1812,7 +1812,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 10c0/978e1a2782131c39424661796b5fdbd2a05c08cb22506eb23459eb2e879344817027ac05f09243103ab2505bb455c0358bd2509351ee1ed4689c103679f53a5e
+  checksum: 10c0/e1dd39f6ae26f7e53261f95ee5ec1cf6b9a8b9eabf0b908d3cf589bff30f86051ab6b86364dc3fdb11fce3684e90255173988a56091f778c4f77e3d75afbd62e
   languageName: node
   linkType: hard
 
